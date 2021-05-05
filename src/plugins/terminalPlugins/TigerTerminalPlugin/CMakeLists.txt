@@ -1,0 +1,1 @@
+ADD_TERMINAL_PLUGIN(tigerTerminalPlugin ${CMAKE_CURRENT_LIST_DIR}/TigerTerminalPlugin.cpp)

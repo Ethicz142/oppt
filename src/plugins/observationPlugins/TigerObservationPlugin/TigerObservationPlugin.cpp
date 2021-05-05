@@ -32,6 +32,7 @@ public :
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
         ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
+        debug::show_message("observationRequest");
         debug::show_message(debug::to_string(observationRequest));
         return observationResult;
     }
