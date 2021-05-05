@@ -1,0 +1,1 @@
+ADD_OBSERVATION_PLUGIN(tigerObservationPlugin ${CMAKE_CURRENT_LIST_DIR}/TigerObservationPlugin.cpp)
