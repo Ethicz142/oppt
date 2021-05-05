@@ -22,6 +22,10 @@ public:
         PropagationResultSharedPtr propagationResult(new PropagationResult());
         debug::show_message("propagationRequest");
         debug::show_message(debug::to_string(propagationRequest));
+        VectorFloat resultingState(propagationRequest->currentState->as<VectorState>()->asVector());
+        propagationResult->previousState = propagationRequest->currentState.get();
+        propagationResult->nextState =
+            std::make_shared<oppt::VectorState>(resultingState);
         return propagationResult;
     }
 

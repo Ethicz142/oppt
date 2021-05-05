@@ -31,9 +31,35 @@ public :
     }
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
-        ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
         debug::show_message("observationRequest");
         debug::show_message(debug::to_string(observationRequest));
+        ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
+        VectorFloat stateVec = observationRequest->currentState->as<VectorState>()->asVector();
+        VectorFloat actionVec = observationRequest->action->as<VectorAction>()->asVector();
+        VectorFloat observationVec(robotEnvironment_->getRobot()->getObservationSpace()->getNumDimensions(), 0.0);
+        long binNumber = 0;
+
+        if (actionVec[0] < 2.5){
+            // The action is a movement action, so no sampling here. An observation of 0 indicates a null observation
+            observationVec[0] = 0.0;
+        } else{
+            FloatType probability = 0.99;
+            bool obsMatches =
+                std::bernoulli_distribution(
+                    probability)(*(robotEnvironment_->getRobot()->getRandomEngine().get()));
+            int stateInt = (int) stateVec[0] + 0.25;
+            if (obsMatches) {
+                observationVec[0] = stateInt;
+                binNumber = 1;
+            } else {
+                observationVec[0] = stateInt;
+                binNumber = 2;
+            }        
+        }
+        ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);
+        observation->as<DiscreteVectorObservation>()->setBinNumber(binNumber);
+        observationResult->observation = observation;
+        observationResult->errorVector = observationRequest->errorVector;
         return observationResult;
     }
 

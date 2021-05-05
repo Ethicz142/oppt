@@ -1,0 +1,1 @@
+ADD_INITIAL_BELIEF_PLUGIN(tigerInitialBeliefPlugin ${CMAKE_CURRENT_LIST_DIR}/TigerInitialBeliefPlugin.cpp)
