@@ -1,0 +1,1 @@
+ADD_TRANSITION_PLUGIN(tigerTransitionPlugin ${CMAKE_CURRENT_LIST_DIR}/TigerTransitionPlugin.cpp)
