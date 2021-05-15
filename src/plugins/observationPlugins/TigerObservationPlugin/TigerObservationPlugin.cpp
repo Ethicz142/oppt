@@ -43,7 +43,7 @@ public :
             // The action is a movement action, so no sampling here. An observation of 0 indicates a null observation
             observationVec[0] = 0.0;
         } else{
-            FloatType probability = 0.85;
+            FloatType probability = 0.65;
             bool obsMatches =
                 std::bernoulli_distribution(
                     probability)(*(robotEnvironment_->getRobot()->getRandomEngine().get()));
