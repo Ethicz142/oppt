@@ -51,7 +51,7 @@ public :
             if (obsMatches) {
                 observationVec[0] = stateInt;
             } else {
-                observationVec[0] = stateInt;
+                observationVec[0] = stateInt^3;
             }        
             binNumber = (int) observationVec[0] + 0.25;
         }
