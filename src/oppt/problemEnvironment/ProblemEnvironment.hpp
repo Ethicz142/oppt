@@ -884,6 +884,10 @@ private:
             // Update step
             currentStep++;
 
+            // Input between steps
+            cout << "-- DEBUG -- Input: " << endl;
+            getchar();
+
             if (terminal)
                 break;
         }

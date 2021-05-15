@@ -49,7 +49,7 @@ public:
     }
 
     virtual RobotStateSharedPtr sampleAnInitState() override {
-        debug::show_message("sample state called from belief plugin");
+        // debug::show_message("sample state called from belief plugin");
         VectorFloat initStateVec = toStdVec<FloatType>(uniformDistribution_->sample(1).col(0));
         unsigned int stateDimension = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();
         if (initStateVec.size() != stateDimension)

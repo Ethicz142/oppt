@@ -25,14 +25,14 @@ public :
     }
 
     virtual bool load(const std::string& optionsFile) override {
-        debug::show_message("observation");
-        debug::show_message(optionsFile);
+        // debug::show_message("observation");
+        // debug::show_message(optionsFile);
         return true;
     }
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
-        debug::show_message("observationRequest");
-        debug::show_message(debug::to_string(observationRequest));
+        // debug::show_message("observationRequest");
+        // debug::show_message(debug::to_string(observationRequest));
         ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
         VectorFloat stateVec = observationRequest->currentState->as<VectorState>()->asVector();
         VectorFloat actionVec = observationRequest->action->as<VectorAction>()->asVector();
@@ -50,11 +50,10 @@ public :
             int stateInt = (int) stateVec[0] + 0.25;
             if (obsMatches) {
                 observationVec[0] = stateInt;
-                binNumber = 1;
             } else {
                 observationVec[0] = stateInt;
-                binNumber = 2;
             }        
+            binNumber = (int) observationVec[0] + 0.25;
         }
         ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);
         observation->as<DiscreteVectorObservation>()->setBinNumber(binNumber);

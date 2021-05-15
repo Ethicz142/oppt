@@ -28,14 +28,14 @@ public:
     virtual ~TigerRewardPlugin() = default;
 
     virtual bool load(const std::string& optionsFile) override {
-        debug::show_message("reward");
+        // debug::show_message("reward");
         debug::show_message(optionsFile);
         return true;
     }
 
     virtual FloatType getReward(const PropagationResultSharedPtr& propagationResult) const override {  
-        debug::show_message("propagationResult");
-        debug::show_message(debug::to_string(propagationResult));     
+        // debug::show_message("propagationResult");
+        // debug::show_message(debug::to_string(propagationResult));     
         return -1.0;
     }
 

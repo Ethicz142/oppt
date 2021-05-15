@@ -27,28 +27,36 @@ public:
     virtual ~TigerTerminalPlugin() = default;
 
     virtual bool load(const std::string& optionsFile) override {
-        debug::show_message("terminal");
-        debug::show_message(optionsFile);
+        // debug::show_message("terminal");
+        // debug::show_message(optionsFile);
         return true;
     }
 
     virtual ValidityReportSharedPtr isValid(const PropagationResultSharedPtr& propagationResult) override {
-        //checks if a state is valid or invalid
-        ValidityReportSharedPtr vr(new ValidityReport(propagationResult->nextState));        
-        VectorFloat stateVec = propagationResult->nextState->as<VectorState>()->asVector();
-        vr->isValid = true;
-        // if (stateVec[0] < 0.5 || stateVec[0] > 8.5 || stateVec[1] < 0.5 || stateVec[1] > 7.5)
-        //     vr->isValid = false;
-        return vr;
+        ValidityReportSharedPtr validityReport(new ValidityReport(propagationResult->nextState));
+        validityReport->satisfiesConstraints = true;
+        validityReport->isValid = true;
+        return validityReport;
     }
 
     virtual bool isTerminal(const PropagationResultSharedPtr& propagationResult) override {
-        //return false;
-        if (!isValid(propagationResult)->isValid)
-            return true;        
-        VectorFloat stateVec = propagationResult->nextState->as<VectorState>()->asVector();
-        debug::show_message("terminal propgationresult");
-        debug::show_message(debug::to_string(propagationResult));
+        /*** Need to guard against nullptr since Terminal Plugin is used initially.
+        // Check in ProblemEnvironment.hpp
+        // run(const unsigned int& run, std::ofstream & os, int argc, char const * argv[])
+        ***/
+    //    debug::show_message("terminal isTerminal");
+
+        if (propagationResult->action != nullptr){
+            // Retrieve the actionVec
+            VectorFloat actionVec = propagationResult->action->as<VectorAction>()->asVector(); 
+             // Check if an open action was taken 
+            if(actionVec[0] != 3.0){
+                // The problem is over after an open action. We consider this terminal
+                return true;
+            }
+        }
+
+        // No Open action was taken
         return false;
     }
     
