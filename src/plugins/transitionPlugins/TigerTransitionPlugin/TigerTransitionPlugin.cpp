@@ -34,9 +34,6 @@ public:
         // Initialize the next state to be the same as the previous state by default
         VectorFloat resultingState(stateVector);
 
-        // Opened a door, end the scenario
-        if (actionApplied[0] < 2.25) resultingState[0] = 3.0;
-
         // Create a robotState object from resulting state
         RobotStateSharedPtr nextRobotState = std::make_shared<oppt::VectorState>(resultingState);
         propagationResult->nextState = nextRobotState;

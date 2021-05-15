@@ -50,7 +50,7 @@ public:
             // Retrieve the actionVec
             VectorFloat actionVec = propagationResult->action->as<VectorAction>()->asVector(); 
              // Check if an open action was taken 
-            if(actionVec[0] != 3.0){
+            if(actionVec[0] != 3){
                 // The problem is over after an open action. We consider this terminal
                 return true;
             }

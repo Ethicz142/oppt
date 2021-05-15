@@ -17,6 +17,7 @@
 #define _TIGER_INITIAL_STATE_SAMPLER_PLUGIN_HPP_
 #include "oppt/plugin/Plugin.hpp"
 #include "TigerInitialBeliefOptions.hpp"
+#include "oppt/opptCore/Distribution.hpp"
 
 namespace oppt
 {
@@ -50,12 +51,30 @@ public:
 
     virtual RobotStateSharedPtr sampleAnInitState() override {
         // debug::show_message("sample state called from belief plugin");
-        VectorFloat initStateVec = toStdVec<FloatType>(uniformDistribution_->sample(1).col(0));
-        unsigned int stateDimension = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();
-        if (initStateVec.size() != stateDimension)
-            ERROR("Init state size doesnt fit");
-        RobotStateSharedPtr initState(new VectorState(initStateVec));
-        return initState;
+
+        // Update components of the resulting vector
+        // Sample from uniform distribution to make the transition on the intention value
+        unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+        std::default_random_engine generator(seed1);
+        std::uniform_real_distribution<double> distribution(0, 1);
+
+        
+        // Allocate a random state based on sample
+        VectorFloat initialStateVec(1, 1);
+
+        // Pack it into the oppt structures
+        FloatType tigerRightSample = (FloatType) distribution(generator);
+        // Change according to sample
+        if(tigerRightSample >= 0.5){
+            // Init the state with tiger right
+            initialStateVec[0] = 2;
+        }
+
+        // Wrap initial state vector into oppt RobotState structure
+        RobotStateSharedPtr initialState = std::make_shared<VectorState>(initialStateVec);
+
+       
+        return initialState;
     }
 
 private:
