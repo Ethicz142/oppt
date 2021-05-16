@@ -14,6 +14,7 @@
  * If not, see http://www.gnu.org/licenses/.
  */
 #include "oppt/plugin/Plugin.hpp"
+#include "TigerObservationOptions.hpp"
 
 namespace oppt
 {
@@ -25,8 +26,8 @@ public :
     }
 
     virtual bool load(const std::string& optionsFile) override {
-        // debug::show_message("observation");
-        // debug::show_message(optionsFile);
+        parseOptions_<TigerObservationOptions>(optionsFile);
+        tigerObservationOptions_ = static_cast<TigerObservationOptions*>(options_.get());
         return true;
     }
 
@@ -43,7 +44,7 @@ public :
             // The action is a movement action, so no sampling here. An observation of 0 indicates a null observation
             observationVec[0] = 0.0;
         } else{
-            FloatType probability = 0.65;
+            FloatType probability = 1 - tigerObservationOptions_->observationError;
             bool obsMatches =
                 std::bernoulli_distribution(
                     probability)(*(robotEnvironment_->getRobot()->getRandomEngine().get()));
@@ -62,6 +63,8 @@ public :
         return observationResult;
     }
 
+private:
+    TigerObservationOptions* tigerObservationOptions_;
 };
 OPPT_REGISTER_OBSERVATION_PLUGIN(TigerObservationPlugin)
 }
