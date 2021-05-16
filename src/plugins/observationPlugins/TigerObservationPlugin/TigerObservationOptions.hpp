@@ -37,8 +37,8 @@ public:
     }
 
     static void addDefaultObservationOptions(options::OptionParser* parser) {
-        parser->addOption<FloatType>("rewardPluginOptions",
-                                        "correctGuessReward",
+        parser->addOption<FloatType>("observationPluginOptions",
+                                        "observationError",
                                         &TigerObservationOptions::observationError);
     }
 

@@ -14,6 +14,7 @@
  * If not, see http://www.gnu.org/licenses/.
  */
 #include "oppt/plugin/Plugin.hpp"
+#include "oppt/opptCore/Distribution.hpp"
 #include "TigerObservationOptions.hpp"
 
 namespace oppt
