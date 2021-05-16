@@ -16,7 +16,6 @@
 #ifndef _TIGER_INITIAL_STATE_SAMPLER_PLUGIN_HPP_
 #define _TIGER_INITIAL_STATE_SAMPLER_PLUGIN_HPP_
 #include "oppt/plugin/Plugin.hpp"
-#include "TigerInitialBeliefOptions.hpp"
 #include "oppt/opptCore/Distribution.hpp"
 
 namespace oppt
@@ -31,21 +30,6 @@ public:
     virtual ~TigerInitialBeliefPlugin() = default;
 
     virtual bool load(const std::string& optionsFile) override {
-        debug::show_message("load called from belief plugin");
-        parseOptions_<TigerInitialBeliefOptions>(optionsFile);
-        auto options = static_cast<TigerInitialBeliefOptions*>(options_.get());
-        unsigned int numDimensions = robotEnvironment_->getRobot()->getStateSpace()->getNumDimensions();
-        if (options->lowerBound.size() != numDimensions)
-            ERROR("Lower bound for the uniform distribution doesn't match state space dimension");
-        if (options->upperBound.size() != numDimensions)
-            ERROR("Upper bound for the uniform distribution doesn't match state space dimension");
-        for (size_t i = 0; i != options->lowerBound.size(); ++i) {
-            if (options->lowerBound[i] > options->upperBound[i])
-                ERROR("Lower bound for initial belief must be smaller than upper bound");
-        }
-        auto randomEngine = robotEnvironment_->getRobot()->getRandomEngine();
-        uniformDistribution_ =
-            std::make_unique<UniformDistribution<FloatType>>(options->lowerBound, options->upperBound, randomEngine);
         return true;
     }
 
@@ -73,14 +57,8 @@ public:
         // Wrap initial state vector into oppt RobotState structure
         RobotStateSharedPtr initialState = std::make_shared<VectorState>(initialStateVec);
 
-       
         return initialState;
     }
-
-private:
-    VectorFloat initialStateVec_;
-
-    std::unique_ptr<Distribution<FloatType>> uniformDistribution_;
 };
 
 OPPT_REGISTER_INITIAL_BELIEF_PLUGIN(TigerInitialBeliefPlugin)
