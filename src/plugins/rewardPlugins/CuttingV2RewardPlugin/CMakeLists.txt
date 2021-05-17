@@ -1,0 +1,1 @@
+ADD_REWARD_PLUGIN(cuttingV2RewardPlugin ${CMAKE_CURRENT_LIST_DIR}/CuttingV2RewardPlugin.cpp)

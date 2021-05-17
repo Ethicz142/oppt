@@ -1,0 +1,1 @@
+ADD_TRANSITION_PLUGIN(cuttingV2TransitionPlugin ${CMAKE_CURRENT_LIST_DIR}/CuttingV2TransitionPlugin.cpp)

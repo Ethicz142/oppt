@@ -1,0 +1,1 @@
+ADD_TERMINAL_PLUGIN(cuttingV2TerminalPlugin ${CMAKE_CURRENT_LIST_DIR}/CuttingV2TerminalPlugin.cpp)

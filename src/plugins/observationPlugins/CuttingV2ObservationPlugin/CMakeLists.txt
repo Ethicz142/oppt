@@ -1,0 +1,1 @@
+ADD_OBSERVATION_PLUGIN(cuttingV2ObservationPlugin ${CMAKE_CURRENT_LIST_DIR}/CuttingV2ObservationPlugin.cpp)

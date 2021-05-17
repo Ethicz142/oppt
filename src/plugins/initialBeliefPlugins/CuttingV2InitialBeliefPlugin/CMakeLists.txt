@@ -1,0 +1,1 @@
+ADD_INITIAL_BELIEF_PLUGIN(cuttingV2InitialBeliefPlugin ${CMAKE_CURRENT_LIST_DIR}/CuttingV2InitialBeliefPlugin.cpp)
