@@ -17,6 +17,7 @@
 #define _CUTTINGV2_INITIAL_STATE_SAMPLER_PLUGIN_HPP_
 #include "oppt/plugin/Plugin.hpp"
 #include "oppt/opptCore/Distribution.hpp"
+#include "CuttingV2InitialBeliefOptions.hpp"
 
 namespace oppt
 {
@@ -30,28 +31,29 @@ public:
     virtual ~CuttingV2InitialBeliefPlugin() = default;
 
     virtual bool load(const std::string& optionsFile) override {
+        parseOptions_<CuttingV2InitialBeliefOptions>(optionsFile);
+        cuttingV2InitialBeliefOptions_ = static_cast<CuttingV2InitialBeliefOptions*>(options_.get());
         return true;
     }
 
     virtual RobotStateSharedPtr sampleAnInitState() override {
-        // debug::show_message("sample state called from belief plugin");
-
         // Update components of the resulting vector
         // Sample from uniform distribution to make the transition on the intention value
         unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
         std::default_random_engine generator(seed1);
         std::uniform_real_distribution<double> distribution(0, 1);
 
+        int numberOfCutters = cuttingV2InitialBeliefOptions_->numberOfCutters;
+        //each cutter has a sharpness and hardness state, the object also has a state
+        int numberOfStates = 2 * numberOfCutters + 1;
         
         // Allocate a random state based on sample
-        VectorFloat initialStateVec(1, 1);
+        VectorFloat initialStateVec(numberOfStates, 0);
 
-        // Pack it into the oppt structures
-        FloatType cuttingV2RightSample = (FloatType) distribution(generator);
-        // Change according to sample
-        if(cuttingV2RightSample >= 0.5){
-            // Init the state with cuttingV2 right
-            initialStateVec[0] = 2;
+        //the object is uncut (0), hence why we start at i = 1
+        //random sharpness & hardness for the cutters, we don't know what they are until we scan
+        for (int i = 1; i < numberOfStates; i++){
+            initialStateVec[i] = (FloatType) distribution(generator);
         }
 
         // Wrap initial state vector into oppt RobotState structure
@@ -59,6 +61,8 @@ public:
 
         return initialState;
     }
+private:
+    CuttingV2InitialBeliefOptions* cuttingV2InitialBeliefOptions_;
 };
 
 OPPT_REGISTER_INITIAL_BELIEF_PLUGIN(CuttingV2InitialBeliefPlugin)
