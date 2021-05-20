@@ -41,10 +41,10 @@ public:
     // Add the transition plugin options
     static void addGeneralPluginOptions(options::OptionParser* parser) {
 
-        parser->addOption<float>("transitionPluginOptions",
+        parser->addOption<float>("generalOptions",
                                 "trueObjectHardness",
                                 &CuttingV2GeneralOptions::trueObjectHardness);    
-        parser->addOption<VectorFloat>("transitionPluginOptions",
+        parser->addOption<VectorFloat>("generalOptions",
                                        "trueCutterProperties",
                                        &CuttingV2GeneralOptions::trueCutterProperties);
     }
