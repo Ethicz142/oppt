@@ -21,11 +21,11 @@ public:
     }
 
     virtual PropagationResultSharedPtr propagateState(const PropagationRequest* propagationRequest) const override {
-        debug::show_message("Transition propagateState");
-        for (int i = 0; i < cuttingV2Options_->trueCutterProperties.size(); i++){
-            debug::show_message(debug::to_string(cuttingV2Options_->trueCutterProperties[i]));
-        }
-        debug::show_message(debug::to_string(cuttingV2Options_->trueObjectHardness));
+        // debug::show_message("Transition propagateState");
+        // for (int i = 0; i < cuttingV2Options_->trueCutterProperties.size(); i++){
+        //     debug::show_message(debug::to_string(cuttingV2Options_->trueCutterProperties[i]));
+        // }
+        // debug::show_message(debug::to_string(cuttingV2Options_->trueObjectHardness));
 
         // Copy information from propagationRequest to propagationResult
         PropagationResultSharedPtr propagationResult(new PropagationResult());

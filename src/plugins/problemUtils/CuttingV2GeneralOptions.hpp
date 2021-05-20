@@ -30,6 +30,10 @@ public:
 
     float trueObjectHardness;
     VectorFloat trueCutterProperties;
+    int numberOfCutters;
+
+    // observation variables
+    FloatType observationError = 0.0;
 
     static std::unique_ptr<options::OptionParser> makeParser() {
         std::unique_ptr<options::OptionParser> parser =
@@ -47,6 +51,14 @@ public:
         parser->addOption<VectorFloat>("generalOptions",
                                        "trueCutterProperties",
                                        &CuttingV2GeneralOptions::trueCutterProperties);
+
+        parser->addOption<int>("generalOptions",
+                                    "numberOfCutters",
+                                    &CuttingV2GeneralOptions::numberOfCutters);
+
+        parser->addOption<FloatType>("observationPluginOptions",
+                                        "observationError",
+                                        &CuttingV2GeneralOptions::observationError);
     }
 };
 }

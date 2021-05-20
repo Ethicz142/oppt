@@ -15,7 +15,7 @@
  */
 #include "oppt/plugin/Plugin.hpp"
 #include "oppt/opptCore/Distribution.hpp"
-#include "CuttingV2ObservationOptions.hpp"
+#include "../../problemUtils/CuttingV2GeneralOptions.hpp"
 
 namespace oppt
 {
@@ -27,25 +27,25 @@ public :
     }
 
     virtual bool load(const std::string& optionsFile) override {
-        parseOptions_<CuttingV2ObservationOptions>(optionsFile);
-        cuttingV2ObservationOptions_ = static_cast<CuttingV2ObservationOptions*>(options_.get());
+        parseOptions_<CuttingV2GeneralOptions>(optionsFile);
+        cuttingV2Options_ = static_cast<CuttingV2GeneralOptions*>(options_.get());
         return true;
     }
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
-        // debug::show_message("observationRequest");
-        // debug::show_message(debug::to_string(observationRequest));
+        debug::show_message("observationRequest");
+        debug::show_message(debug::to_string(cuttingV2Options_->numberOfCutters));
         ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
         VectorFloat stateVec = observationRequest->currentState->as<VectorState>()->asVector();
         VectorFloat actionVec = observationRequest->action->as<VectorAction>()->asVector();
         VectorFloat observationVec(robotEnvironment_->getRobot()->getObservationSpace()->getNumDimensions(), 0.0);
         long binNumber = 0;
 
-        if (actionVec[0] < 2.5){
-            // The action is a movement action, so no sampling here. An observation of 0 indicates a null observation
+        if (actionVec[0] < 0.5){
+            // The action is scan
             observationVec[0] = 0.0;
         } else{
-            FloatType probability = 1 - cuttingV2ObservationOptions_->observationError;
+            FloatType probability = 1 - cuttingV2Options_->observationError;
             bool obsMatches =
                 std::bernoulli_distribution(
                     probability)(*(robotEnvironment_->getRobot()->getRandomEngine().get()));
@@ -65,7 +65,7 @@ public :
     }
 
 private:
-    CuttingV2ObservationOptions* cuttingV2ObservationOptions_;
+    CuttingV2GeneralOptions* cuttingV2Options_;
 };
 OPPT_REGISTER_OBSERVATION_PLUGIN(CuttingV2ObservationPlugin)
 }
