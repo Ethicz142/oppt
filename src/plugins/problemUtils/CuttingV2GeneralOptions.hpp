@@ -34,6 +34,8 @@ public:
 
     // observation variables
     FloatType observationError = 0.0;
+    FloatType sharpnessBound = 0.0;
+    FloatType hardnessBound = 0.0;
 
     static std::unique_ptr<options::OptionParser> makeParser() {
         std::unique_ptr<options::OptionParser> parser =
@@ -59,6 +61,12 @@ public:
         parser->addOption<FloatType>("observationPluginOptions",
                                         "observationError",
                                         &CuttingV2GeneralOptions::observationError);
+        parser->addOption<FloatType>("observationPluginOptions",
+                                        "sharpnessBound",
+                                        &CuttingV2GeneralOptions::sharpnessBound);
+        parser->addOption<FloatType>("observationPluginOptions",
+                                        "hardnessBound",
+                                        &CuttingV2GeneralOptions::hardnessBound);
     }
 };
 }

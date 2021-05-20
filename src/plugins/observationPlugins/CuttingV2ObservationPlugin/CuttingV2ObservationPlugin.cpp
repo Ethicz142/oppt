@@ -33,17 +33,28 @@ public :
     }
 
     virtual ObservationResultSharedPtr getObservation(const ObservationRequest* observationRequest) const override {
-        debug::show_message("observationRequest");
-        debug::show_message(debug::to_string(cuttingV2Options_->numberOfCutters));
+        // debug::show_message("observationRequest");
+        // debug::show_message(debug::to_string(cuttingV2Options_->numberOfCutters));
         ObservationResultSharedPtr observationResult = std::make_shared<ObservationResult>();
         VectorFloat stateVec = observationRequest->currentState->as<VectorState>()->asVector();
         VectorFloat actionVec = observationRequest->action->as<VectorAction>()->asVector();
         VectorFloat observationVec(robotEnvironment_->getRobot()->getObservationSpace()->getNumDimensions(), 0.0);
         long binNumber = 0;
 
+        // Populate observation value according to action taken
+        // Sample from uniform distribution to get noisy observation from state and action
+        unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+        std::default_random_engine generator(seed1);
+        std::uniform_real_distribution<double> hardnessDistribution(-cuttingV2Options_->hardnessBound, cuttingV2Options_->hardnessBound);
+        std::uniform_real_distribution<double> sharpnessDistribution(-cuttingV2Options_->sharpnessBound, cuttingV2Options_->sharpnessBound);
         if (actionVec[0] < 0.5){
             // The action is scan
-            observationVec[0] = 0.0;
+            //the first observation is for D, skip it
+            for (int i = 1; i < observationVec.size(); i += 2){
+                // for each cutter (hardness, sharpness)
+                observationVec[i] = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
+                observationVec[i+1] = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+            }
         } else{
             FloatType probability = 1 - cuttingV2Options_->observationError;
             bool obsMatches =
