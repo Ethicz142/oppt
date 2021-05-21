@@ -26,6 +26,13 @@ public :
         ObservationPlugin() {
     }
 
+    FloatType restrictWithinRange(const float& number) const {
+        const float upperBound = 1.0;
+        const float lowerBound = 0.0;
+        //have the number be between 0 and 1
+        return std::max(lowerBound, std::min(upperBound, number));
+    }
+
     virtual bool load(const std::string& optionsFile) override {
         parseOptions_<CuttingV2GeneralOptions>(optionsFile);
         cuttingV2Options_ = static_cast<CuttingV2GeneralOptions*>(options_.get());
@@ -52,8 +59,11 @@ public :
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                observationVec[i] = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
-                observationVec[i+1] = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+                float hardnessObservationValue = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
+                float sharpnessObservationValue = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+
+                observationVec[i] = restrictWithinRange(hardnessObservationValue);
+                observationVec[i+1] = restrictWithinRange(sharpnessObservationValue);
             }
         } else{
             FloatType probability = 1 - cuttingV2Options_->observationError;
