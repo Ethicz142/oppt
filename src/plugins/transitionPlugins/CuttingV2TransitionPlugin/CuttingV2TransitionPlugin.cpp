@@ -42,8 +42,9 @@ public:
         //not scan, scan doesn't change the state
         if (actionApplied[0] > 0){
             int cutterUsed = (int) actionApplied[0] + 0.25;
-            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterUsed - 1];
-            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterUsed];
+            int cutterIndex = (cutterUsed - 1) * 2;
+            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
+            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
 
             float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
             float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
@@ -55,10 +56,22 @@ public:
             std::uniform_real_distribution<double> distribution(0, 1);
 
             FloatType sample = (FloatType) distribution(generator);
-
+            // if (actionApplied[0] > 1.5){
+            //     debug::show_message("------------");
+            //     debug::show_message(debug::to_string(actionApplied[0]));
+            //     debug::show_message(debug::to_string(trueCutterHardness));
+            //     debug::show_message(debug::to_string(trueCutterSharpness));
+            //     debug::show_message(debug::to_string(objHardnessLowerBound));
+            //     debug::show_message(debug::to_string(objHardnessUpperBound));
+            //     debug::show_message(debug::to_string(objSharpnessLowerBound));
+            //     debug::show_message(debug::to_string(objSharpnessUpperBound));
+            // }
+            
+            
             if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
                 // hardness & sharpness in optimal range
-                if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objHardnessUpperBound){
+                if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    // debug::show_message("optimal");
                     if (sample <= 0.95){
                         resultingState[0] = 1;
                     }                    

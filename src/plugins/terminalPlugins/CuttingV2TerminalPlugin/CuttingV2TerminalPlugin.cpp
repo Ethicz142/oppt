@@ -46,17 +46,17 @@ public:
         ***/
     //    debug::show_message("terminal isTerminal");
 
-        if (propagationResult->action != nullptr){
-            // Retrieve the actionVec
-            VectorFloat actionVec = propagationResult->action->as<VectorAction>()->asVector(); 
-             // Check if an open action was taken 
-            if(actionVec[0] != 3){
-                // The problem is over after an open action. We consider this terminal
+        if (propagationResult->nextState != nullptr){
+            VectorFloat nextStateVec = propagationResult->nextState->as<VectorState>()->asVector(); 
+            if(nextStateVec[0] != 0){
+                // for (int i = 0; i < nextStateVec.size(); i++){
+                //     debug::show_message(debug::to_string(nextStateVec[i]));
+                // }
+                // the problem is over if the object is cut or damaged
                 return true;
             }
         }
-
-        // No Open action was taken
+        // is uncut
         return false;
     }
     
