@@ -28,7 +28,8 @@ public:
 
     virtual ~CuttingV2GeneralOptions() = default;
 
-    float trueObjectHardness;
+    VectorFloat trueObjectHardnessRange;
+    VectorFloat trueObjectSharpnessRange;
     VectorFloat trueCutterProperties;
     int numberOfCutters;
 
@@ -54,9 +55,12 @@ public:
     // Add the transition plugin options
     static void addGeneralPluginOptions(options::OptionParser* parser) {
 
-        parser->addOption<float>("generalOptions",
-                                "trueObjectHardness",
-                                &CuttingV2GeneralOptions::trueObjectHardness);    
+        parser->addOption<VectorFloat>("generalOptions",
+                                        "trueObjectHardnessRange",
+                                        &CuttingV2GeneralOptions::trueObjectHardnessRange); 
+        parser->addOption<VectorFloat>("generalOptions",
+                                        "trueObjectSharpnessRange",
+                                        &CuttingV2GeneralOptions::trueObjectSharpnessRange);    
         parser->addOption<VectorFloat>("generalOptions",
                                        "trueCutterProperties",
                                        &CuttingV2GeneralOptions::trueCutterProperties);

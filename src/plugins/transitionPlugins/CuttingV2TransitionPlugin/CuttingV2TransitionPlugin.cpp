@@ -38,6 +38,34 @@ public:
 
         // Initialize the next state to be the same as the previous state by default
         VectorFloat resultingState(stateVector);
+        
+        //not scan, scan doesn't change the state
+        if (actionApplied[0] > 0){
+            int cutterUsed = (int) actionApplied[0] + 0.25;
+            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterUsed - 1];
+            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterUsed];
+
+            float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
+            float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
+            float objSharpnessLowerBound = cuttingV2Options_->trueObjectSharpnessRange[0];
+            float objSharpnessUpperBound = cuttingV2Options_->trueObjectSharpnessRange[1];
+
+            unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+            std::default_random_engine generator(seed1);
+            std::uniform_real_distribution<double> distribution(0, 1);
+
+            FloatType sample = (FloatType) distribution(generator);
+
+            if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                // hardness & sharpness in optimal range
+                if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objHardnessUpperBound){
+                    if (sample <= 0.95){
+                        resultingState[0] = 1;
+                    }                    
+                }
+            }
+
+        }
 
         // Create a robotState object from resulting state
         RobotStateSharedPtr nextRobotState = std::make_shared<oppt::VectorState>(resultingState);
