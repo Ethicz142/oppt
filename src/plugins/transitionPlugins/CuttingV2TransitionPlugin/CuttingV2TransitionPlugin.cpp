@@ -76,6 +76,58 @@ public:
                         resultingState[0] = 1;
                     }                    
                 }
+                //high sharpness, optimal hardness
+                else if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+                //high hardness, optimal sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+                //high hardness & sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.5){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+            }
+            else if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness < objSharpnessLowerBound){
+                //low sharpness, optimal hardness
+                if (trueCutterHardness <= objHardnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 2;
+                    }  
+                }
+                //low sharpness, high hardness
+                if (trueCutterHardness > objHardnessUpperBound){
+                    if (sample <= 0.9){
+                        resultingState[0] = 2;
+                    }  
+                }
+            }
+            else if (trueCutterHardness < objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                //low hardness, optimal sharpness
+                if (trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= 0.3){
+                        resultingState[0] = 1;
+                    }  
+                }
+                //low hardness, high sharpness
+                if (trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.4){
+                        resultingState[0] = 1;
+                    }  
+                }
             }
 
         }
