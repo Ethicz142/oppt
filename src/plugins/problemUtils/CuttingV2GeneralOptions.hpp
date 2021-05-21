@@ -35,8 +35,9 @@ public:
 
     // observation variables
     FloatType observationError = 0.0;
-    FloatType sharpnessBound = 0.0;
-    FloatType hardnessBound = 0.0;
+    FloatType damageErrorBound = 0.0;
+    FloatType sharpnessErrorBound = 0.0;
+    FloatType hardnessErrorBound = 0.0;
 
     //reward variables
     FloatType objectCutReward = 0.0;
@@ -73,11 +74,14 @@ public:
                                         "observationError",
                                         &CuttingV2GeneralOptions::observationError);
         parser->addOption<FloatType>("observationPluginOptions",
-                                        "sharpnessBound",
-                                        &CuttingV2GeneralOptions::sharpnessBound);
+                                        "damageErrorBound",
+                                        &CuttingV2GeneralOptions::damageErrorBound);
         parser->addOption<FloatType>("observationPluginOptions",
-                                        "hardnessBound",
-                                        &CuttingV2GeneralOptions::hardnessBound);
+                                        "sharpnessErrorBound",
+                                        &CuttingV2GeneralOptions::sharpnessErrorBound);
+        parser->addOption<FloatType>("observationPluginOptions",
+                                        "hardnessErrorBound",
+                                        &CuttingV2GeneralOptions::hardnessErrorBound);
 
         //reward
 
