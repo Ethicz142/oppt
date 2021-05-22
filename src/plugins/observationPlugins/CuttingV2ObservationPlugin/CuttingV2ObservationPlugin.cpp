@@ -26,6 +26,13 @@ public :
         ObservationPlugin() {
     }
 
+    FloatType sigmoid(const float& hardness, const float& sharpness, const float& error) const {
+        //sigmoid to have the number between 0 and 1, 
+        // when hardness + sharpness = 2, y ~= 2
+        // when hardness + sharpness = 0, y ~= 0
+        return 1.0 / (1 + std::exp(-6.0 * (hardness + sharpness + error) + 7.0));
+    }
+
     FloatType restrictWithinRange(const float& number, const float lowerBound, const float upperBound) const {
         //have the number be between 0 and 1
         return std::max(lowerBound, std::min(upperBound, number));
@@ -70,7 +77,7 @@ public :
             float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
             float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
 
-            FloatType damageObservationValue = (trueCutterHardness + trueCutterSharpness) * 50 + ((FloatType) damageDistribution(generator)) * 100;
+            FloatType damageObservationValue = sigmoid(trueCutterHardness, trueCutterSharpness, (FloatType) damageDistribution(generator)) * 100;
             observationVec[0] = restrictWithinRange(damageObservationValue, 0.0, 100.0);     
             binNumber = (int) observationVec[0] + 0.25;
         }
