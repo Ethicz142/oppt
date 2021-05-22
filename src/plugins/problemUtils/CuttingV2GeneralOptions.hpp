@@ -34,7 +34,6 @@ public:
     int numberOfCutters;
 
     // observation variables
-    FloatType observationError = 0.0;
     FloatType damageErrorBound = 0.0;
     FloatType sharpnessErrorBound = 0.0;
     FloatType hardnessErrorBound = 0.0;
@@ -70,9 +69,7 @@ public:
                                     "numberOfCutters",
                                     &CuttingV2GeneralOptions::numberOfCutters);
 
-        parser->addOption<FloatType>("observationPluginOptions",
-                                        "observationError",
-                                        &CuttingV2GeneralOptions::observationError);
+        //observation
         parser->addOption<FloatType>("observationPluginOptions",
                                         "damageErrorBound",
                                         &CuttingV2GeneralOptions::damageErrorBound);
