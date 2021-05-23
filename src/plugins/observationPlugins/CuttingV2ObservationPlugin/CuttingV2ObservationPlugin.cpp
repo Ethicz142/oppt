@@ -26,6 +26,18 @@ public :
         ObservationPlugin() {
     }
 
+    FloatType sigmoid(const float& hardness, const float& sharpness, const float& error) const {
+        //sigmoid to have the number between 0 and 1, 
+        // when hardness + sharpness = 2, y ~= 2
+        // when hardness + sharpness = 0, y ~= 0
+        return 1.0 / (1 + std::exp(-6.0 * (hardness + sharpness + error) + 7.0));
+    }
+
+    FloatType restrictWithinRange(const float& number, const float lowerBound, const float upperBound) const {
+        //have the number be between 0 and 1
+        return std::max(lowerBound, std::min(upperBound, number));
+    }
+
     virtual bool load(const std::string& optionsFile) override {
         parseOptions_<CuttingV2GeneralOptions>(optionsFile);
         cuttingV2Options_ = static_cast<CuttingV2GeneralOptions*>(options_.get());
@@ -45,27 +57,28 @@ public :
         // Sample from uniform distribution to get noisy observation from state and action
         unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
         std::default_random_engine generator(seed1);
-        std::uniform_real_distribution<double> hardnessDistribution(-cuttingV2Options_->hardnessBound, cuttingV2Options_->hardnessBound);
-        std::uniform_real_distribution<double> sharpnessDistribution(-cuttingV2Options_->sharpnessBound, cuttingV2Options_->sharpnessBound);
+        std::uniform_real_distribution<double> hardnessDistribution(-cuttingV2Options_->hardnessErrorBound, cuttingV2Options_->hardnessErrorBound);
+        std::uniform_real_distribution<double> sharpnessDistribution(-cuttingV2Options_->sharpnessErrorBound, cuttingV2Options_->sharpnessErrorBound);
+        std::uniform_real_distribution<double> damageDistribution(-cuttingV2Options_->damageErrorBound, cuttingV2Options_->damageErrorBound);
         if (actionVec[0] < 0.5){
             // The action is scan
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                observationVec[i] = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
-                observationVec[i+1] = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+                float hardnessObservationValue = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
+                float sharpnessObservationValue = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+
+                observationVec[i] = restrictWithinRange(hardnessObservationValue, 0.0, 1.0);
+                observationVec[i+1] = restrictWithinRange(sharpnessObservationValue, 0.0, 1.0);
             }
         } else{
-            FloatType probability = 1 - cuttingV2Options_->observationError;
-            bool obsMatches =
-                std::bernoulli_distribution(
-                    probability)(*(robotEnvironment_->getRobot()->getRandomEngine().get()));
-            int stateInt = (int) stateVec[0] + 0.25;
-            if (obsMatches) {
-                observationVec[0] = stateInt;
-            } else {
-                observationVec[0] = stateInt^3;
-            }        
+            int cutterUsed = (int) actionVec[0] + 0.25;
+            int cutterIndex = (cutterUsed - 1) * 2;
+            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
+            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
+
+            FloatType damageObservationValue = sigmoid(trueCutterHardness, trueCutterSharpness, (FloatType) damageDistribution(generator)) * 100;
+            observationVec[0] = restrictWithinRange(damageObservationValue, 0.0, 100.0);     
             binNumber = (int) observationVec[0] + 0.25;
         }
         ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);

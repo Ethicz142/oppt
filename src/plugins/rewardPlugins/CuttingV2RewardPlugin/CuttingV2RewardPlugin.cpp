@@ -15,7 +15,7 @@
  */
 
 #include "oppt/plugin/Plugin.hpp"
-#include "CuttingV2RewardOptions.hpp"
+#include "../../problemUtils/CuttingV2GeneralOptions.hpp"
 
 namespace oppt
 {
@@ -32,8 +32,8 @@ public:
     virtual bool load(const std::string& optionsFile) override {
         // debug::show_message("reward");
         // debug::show_message(optionsFile);
-        parseOptions_<CuttingV2RewardOptions>(optionsFile);
-        cuttingV2RewardOptions_ = static_cast<CuttingV2RewardOptions*>(options_.get());
+        parseOptions_<CuttingV2GeneralOptions>(optionsFile);
+        cuttingV2Options_ = static_cast<CuttingV2GeneralOptions*>(options_.get());
         return true;
     }
 
@@ -45,37 +45,33 @@ public:
         VectorFloat stateVec = propagationResult->nextState->as<VectorState>()->asVector();
         VectorFloat actionVec = propagationResult->action->as<VectorAction>()->asVector(); 
 
-        // Check if there was a correct guess on the left door
-        if(actionVec[0] == 1){
-            if(stateVec[0] == 1){
-                return cuttingV2RewardOptions_->correctGuessReward;
-            } else {
-                return cuttingV2RewardOptions_->wrongGuessPenalty;
-            }
+        // Check if scan
+        if(actionVec[0] == 0){
+            return cuttingV2Options_->scanPenalty;
         }
-
-        // Check if there was a correct guess on the right door
-        if(actionVec[0] == 2){
-            if(stateVec[0] == 2){
-                return cuttingV2RewardOptions_->correctGuessReward;
-            } else {
-                return cuttingV2RewardOptions_->wrongGuessPenalty;
-            }
+        // cut action + object is cut
+        else if (actionVec[0] > 0 && stateVec[0] == 1){
+            return cuttingV2Options_->objectCutReward + cuttingV2Options_->cutPenalty;
         }
-
-        // Otherwise, apply a step penalty
-        return cuttingV2RewardOptions_->stepPenalty;
+        // cut action + object is damaged
+        else if (actionVec[0] > 0 && stateVec[0] == 2){
+            return cuttingV2Options_->damagedPenalty + cuttingV2Options_->cutPenalty;
+        }
+        //cut action
+        else{
+            return cuttingV2Options_->cutPenalty;
+        }
 
     }
 
     //you need this function
     virtual std::pair<FloatType, FloatType> getMinMaxReward() const override {
-        return std::make_pair(cuttingV2RewardOptions_->wrongGuessPenalty,
-                              cuttingV2RewardOptions_->correctGuessReward);
+        return std::make_pair(cuttingV2Options_->damagedPenalty,
+                              cuttingV2Options_->objectCutReward);
     }
 
 private:
-    CuttingV2RewardOptions* cuttingV2RewardOptions_;
+    CuttingV2GeneralOptions* cuttingV2Options_;
 
 };
 OPPT_REGISTER_REWARD_PLUGIN(CuttingV2RewardPlugin)

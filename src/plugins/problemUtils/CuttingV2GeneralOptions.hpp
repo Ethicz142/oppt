@@ -28,14 +28,22 @@ public:
 
     virtual ~CuttingV2GeneralOptions() = default;
 
-    float trueObjectHardness;
+    VectorFloat trueObjectHardnessRange;
+    VectorFloat trueObjectSharpnessRange;
     VectorFloat trueCutterProperties;
     int numberOfCutters;
 
     // observation variables
-    FloatType observationError = 0.0;
-    FloatType sharpnessBound = 0.0;
-    FloatType hardnessBound = 0.0;
+    FloatType damageErrorBound = 0.0;
+    FloatType sharpnessErrorBound = 0.0;
+    FloatType hardnessErrorBound = 0.0;
+
+    //reward variables
+    FloatType objectCutReward = 0.0;
+    FloatType damagedPenalty = 0.0;
+    FloatType scanPenalty = 0.0;
+    FloatType cutPenalty = 0.0;
+
 
     static std::unique_ptr<options::OptionParser> makeParser() {
         std::unique_ptr<options::OptionParser> parser =
@@ -47,9 +55,12 @@ public:
     // Add the transition plugin options
     static void addGeneralPluginOptions(options::OptionParser* parser) {
 
-        parser->addOption<float>("generalOptions",
-                                "trueObjectHardness",
-                                &CuttingV2GeneralOptions::trueObjectHardness);    
+        parser->addOption<VectorFloat>("generalOptions",
+                                        "trueObjectHardnessRange",
+                                        &CuttingV2GeneralOptions::trueObjectHardnessRange); 
+        parser->addOption<VectorFloat>("generalOptions",
+                                        "trueObjectSharpnessRange",
+                                        &CuttingV2GeneralOptions::trueObjectSharpnessRange);    
         parser->addOption<VectorFloat>("generalOptions",
                                        "trueCutterProperties",
                                        &CuttingV2GeneralOptions::trueCutterProperties);
@@ -58,15 +69,31 @@ public:
                                     "numberOfCutters",
                                     &CuttingV2GeneralOptions::numberOfCutters);
 
+        //observation
         parser->addOption<FloatType>("observationPluginOptions",
-                                        "observationError",
-                                        &CuttingV2GeneralOptions::observationError);
+                                        "damageErrorBound",
+                                        &CuttingV2GeneralOptions::damageErrorBound);
         parser->addOption<FloatType>("observationPluginOptions",
-                                        "sharpnessBound",
-                                        &CuttingV2GeneralOptions::sharpnessBound);
+                                        "sharpnessErrorBound",
+                                        &CuttingV2GeneralOptions::sharpnessErrorBound);
         parser->addOption<FloatType>("observationPluginOptions",
-                                        "hardnessBound",
-                                        &CuttingV2GeneralOptions::hardnessBound);
+                                        "hardnessErrorBound",
+                                        &CuttingV2GeneralOptions::hardnessErrorBound);
+
+        //reward
+
+        parser->addOption<FloatType>("rewardPluginOptions",
+                                        "objectCutReward",
+                                        &CuttingV2GeneralOptions::objectCutReward);
+        parser->addOption<FloatType>("rewardPluginOptions",
+                                        "damagedPenalty",
+                                        &CuttingV2GeneralOptions::damagedPenalty);
+        parser->addOption<FloatType>("rewardPluginOptions",
+                                        "scanPenalty",
+                                        &CuttingV2GeneralOptions::scanPenalty);
+        parser->addOption<FloatType>("rewardPluginOptions",
+                                        "cutPenalty",
+                                        &CuttingV2GeneralOptions::cutPenalty);
     }
 };
 }

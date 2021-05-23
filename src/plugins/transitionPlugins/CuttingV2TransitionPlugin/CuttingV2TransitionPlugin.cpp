@@ -38,6 +38,99 @@ public:
 
         // Initialize the next state to be the same as the previous state by default
         VectorFloat resultingState(stateVector);
+        
+        //not scan, scan doesn't change the state
+        if (actionApplied[0] > 0){
+            int cutterUsed = (int) actionApplied[0] + 0.25;
+            int cutterIndex = (cutterUsed - 1) * 2;
+            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
+            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
+
+            float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
+            float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
+            float objSharpnessLowerBound = cuttingV2Options_->trueObjectSharpnessRange[0];
+            float objSharpnessUpperBound = cuttingV2Options_->trueObjectSharpnessRange[1];
+
+            unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+            std::default_random_engine generator(seed1);
+            std::uniform_real_distribution<double> distribution(0, 1);
+
+            FloatType sample = (FloatType) distribution(generator);
+            // if (actionApplied[0] > 1.5){
+            //     debug::show_message("------------");
+            //     debug::show_message(debug::to_string(actionApplied[0]));
+            //     debug::show_message(debug::to_string(trueCutterHardness));
+            //     debug::show_message(debug::to_string(trueCutterSharpness));
+            //     debug::show_message(debug::to_string(objHardnessLowerBound));
+            //     debug::show_message(debug::to_string(objHardnessUpperBound));
+            //     debug::show_message(debug::to_string(objSharpnessLowerBound));
+            //     debug::show_message(debug::to_string(objSharpnessUpperBound));
+            // }
+            
+            
+            if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                // hardness & sharpness in optimal range
+                if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    // debug::show_message("optimal");
+                    if (sample <= 0.95){
+                        resultingState[0] = 1;
+                    }                    
+                }
+                //high sharpness, optimal hardness
+                else if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+                //high hardness, optimal sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+                //high hardness & sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.5){
+                        resultingState[0] = 1;
+                    } else{
+                        resultingState[0] = 2;
+                    }                   
+                }
+            }
+            else if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness < objSharpnessLowerBound){
+                //low sharpness, optimal hardness
+                if (trueCutterHardness <= objHardnessUpperBound){
+                    if (sample <= 0.7){
+                        resultingState[0] = 2;
+                    }  
+                }
+                //low sharpness, high hardness
+                if (trueCutterHardness > objHardnessUpperBound){
+                    if (sample <= 0.9){
+                        resultingState[0] = 2;
+                    }  
+                }
+            }
+            else if (trueCutterHardness < objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                //low hardness, optimal sharpness
+                if (trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= 0.3){
+                        resultingState[0] = 1;
+                    }  
+                }
+                //low hardness, high sharpness
+                if (trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= 0.4){
+                        resultingState[0] = 1;
+                    }  
+                }
+            }
+
+        }
 
         // Create a robotState object from resulting state
         RobotStateSharedPtr nextRobotState = std::make_shared<oppt::VectorState>(resultingState);
