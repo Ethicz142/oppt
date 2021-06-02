@@ -72,14 +72,93 @@ public :
                 observationVec[i+1] = restrictWithinRange(sharpnessObservationValue, 0.0, 1.0);
             }
         } else{
+            // int cutterUsed = (int) actionVec[0] + 0.25;
+            // int cutterIndex = (cutterUsed - 1) * 2;
+            // float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
+            // float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
+
+            // FloatType damageObservationValue = sigmoid(trueCutterHardness, trueCutterSharpness, (FloatType) damageDistribution(generator)) * 100;
+            // observationVec[0] = restrictWithinRange(damageObservationValue, 0.0, 100.0);     
+            // binNumber = (int) observationVec[0] + 0.25;
+
             int cutterUsed = (int) actionVec[0] + 0.25;
             int cutterIndex = (cutterUsed - 1) * 2;
             float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
             float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
 
-            FloatType damageObservationValue = sigmoid(trueCutterHardness, trueCutterSharpness, (FloatType) damageDistribution(generator)) * 100;
-            observationVec[0] = restrictWithinRange(damageObservationValue, 0.0, 100.0);     
-            binNumber = (int) observationVec[0] + 0.25;
+            float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
+            float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
+            float objSharpnessLowerBound = cuttingV2Options_->trueObjectSharpnessRange[0];
+            float objSharpnessUpperBound = cuttingV2Options_->trueObjectSharpnessRange[1];
+
+            unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+            std::default_random_engine generator(seed1);
+            std::uniform_real_distribution<double> distribution(0, 1);
+
+            FloatType sample = (FloatType) distribution(generator);
+
+            float probability = 1.0 - cuttingV2Options_->damageErrorBound;
+
+            if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                // hardness & sharpness in optimal range
+                if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    // debug::show_message("optimal");
+                    if (sample <= probability){
+                        observationVec[0] = 1;
+                    }
+                }
+                //high sharpness, optimal hardness
+                else if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 2;
+                    }
+                }
+                //high hardness, optimal sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 3;
+                    }        
+                }
+                //high hardness & sharpness
+                else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 4;
+                    }               
+                }
+            }
+            else if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness < objSharpnessLowerBound){
+                //low sharpness, optimal hardness
+                if (trueCutterHardness <= objHardnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 5;
+                    } 
+                }
+                //low sharpness, high hardness
+                if (trueCutterHardness > objHardnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 6;
+                    } 
+                }
+            }
+            else if (trueCutterHardness < objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
+                //low hardness, optimal sharpness
+                if (trueCutterSharpness <= objSharpnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 7;
+                    } 
+                }
+                //low hardness, high sharpness
+                if (trueCutterSharpness > objSharpnessUpperBound){
+                    if (sample <= probability){
+                        observationVec[0] = 8;
+                    } 
+                }
+            }
+            else {
+                if (sample <= probability){
+                        observationVec[0] = 9;
+                } 
+            }
         }
         ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);
         observation->as<DiscreteVectorObservation>()->setBinNumber(binNumber);
