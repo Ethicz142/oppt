@@ -97,67 +97,140 @@ public :
 
             FloatType sample = (FloatType) distribution(generator);
 
-            float probability = 1.0 - cuttingV2Options_->damageErrorBound;
+            float probability = 1.0 - cuttingV2Options_->damageErrorBound; //the high probability
 
             if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
                 // hardness & sharpness in optimal range
                 if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
                     // debug::show_message("optimal");
                     if (sample <= probability){
-                        observationVec[0] = 1;
+                        observationVec[0] = 5;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 4){
+                        observationVec[0] = 2;
+                    }
+                    else if (sample <= probability + 2 * cuttingV2Options_->damageErrorBound / 4){
+                        observationVec[0] = 3;
+                    }
+                    else if (sample <= probability + 3 * cuttingV2Options_->damageErrorBound / 4){
+                        observationVec[0] = 7;
+                    }
+                    else{
+                        observationVec[0] = 8;
                     }
                 }
                 //high sharpness, optimal hardness
                 else if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
                     if (sample <= probability){
-                        observationVec[0] = 2;
+                        observationVec[0] = 8;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 5;
+                    }
+                    else if (sample <= probability + 2 * cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 6;
+                    }
+                    else{
+                        observationVec[0] = 9;
                     }
                 }
                 //high hardness, optimal sharpness
                 else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
                     if (sample <= probability){
-                        observationVec[0] = 3;
-                    }        
+                        observationVec[0] = 7;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 4;
+                    }
+                    else if (sample <= probability + 2 * cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 5;
+                    }
+                    else{
+                        observationVec[0] = 9;
+                    }      
                 }
                 //high hardness & sharpness
                 else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
                     if (sample <= probability){
-                        observationVec[0] = 4;
-                    }               
+                        observationVec[0] = 9;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 2){
+                        observationVec[0] = 7;
+                    }
+                    else{
+                        observationVec[0] = 8;
+                    }             
                 }
             }
             else if (trueCutterHardness >= objHardnessLowerBound && trueCutterSharpness < objSharpnessLowerBound){
                 //low sharpness, optimal hardness
                 if (trueCutterHardness <= objHardnessUpperBound){
                     if (sample <= probability){
+                        observationVec[0] = 2;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 1;
+                    }
+                    else if (sample <= probability + 2 * cuttingV2Options_->damageErrorBound / 3){
                         observationVec[0] = 5;
-                    } 
+                    }
+                    else{
+                        observationVec[0] = 4;
+                    }    
                 }
                 //low sharpness, high hardness
                 if (trueCutterHardness > objHardnessUpperBound){
                     if (sample <= probability){
-                        observationVec[0] = 6;
-                    } 
+                        observationVec[0] = 4;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 2){
+                        observationVec[0] = 2;
+                    }
+                    else{
+                        observationVec[0] = 7;
+                    }  
                 }
             }
             else if (trueCutterHardness < objHardnessLowerBound && trueCutterSharpness >= objSharpnessLowerBound){
                 //low hardness, optimal sharpness
                 if (trueCutterSharpness <= objSharpnessUpperBound){
                     if (sample <= probability){
-                        observationVec[0] = 7;
-                    } 
+                        observationVec[0] = 3;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 1;
+                    }
+                    else if (sample <= probability + 2 * cuttingV2Options_->damageErrorBound / 3){
+                        observationVec[0] = 5;
+                    }
+                    else{
+                        observationVec[0] = 6;
+                    }
                 }
                 //low hardness, high sharpness
                 if (trueCutterSharpness > objSharpnessUpperBound){
                     if (sample <= probability){
+                        observationVec[0] = 6;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 2){
+                        observationVec[0] = 3;
+                    }
+                    else{
                         observationVec[0] = 8;
-                    } 
+                    }  
                 }
             }
+            //low hardness & low sharpness
             else {
                 if (sample <= probability){
-                        observationVec[0] = 9;
-                } 
+                        observationVec[0] = 1;
+                    }
+                    else if (sample <= probability + cuttingV2Options_->damageErrorBound / 2){
+                        observationVec[0] = 2;
+                    }
+                    else{
+                        observationVec[0] = 3;
+                    }  
             }
         }
         ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);
