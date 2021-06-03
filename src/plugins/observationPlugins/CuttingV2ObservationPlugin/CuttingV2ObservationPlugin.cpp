@@ -65,8 +65,8 @@ public :
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                float hardnessObservationValue = cuttingV2Options_->trueCutterProperties[i - 1] + (FloatType) hardnessDistribution(generator);
-                float sharpnessObservationValue = cuttingV2Options_->trueCutterProperties[i] + (FloatType) sharpnessDistribution(generator);
+                float hardnessObservationValue = stateVec[i - 1] + (FloatType) hardnessDistribution(generator);
+                float sharpnessObservationValue = stateVec[i] + (FloatType) sharpnessDistribution(generator);
 
                 observationVec[i] = restrictWithinRange(hardnessObservationValue, 0.0, 1.0);
                 observationVec[i+1] = restrictWithinRange(sharpnessObservationValue, 0.0, 1.0);
@@ -83,8 +83,8 @@ public :
 
             int cutterUsed = (int) actionVec[0] + 0.25;
             int cutterIndex = (cutterUsed - 1) * 2;
-            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
-            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
+            float trueCutterHardness = stateVec[cutterIndex];
+            float trueCutterSharpness = stateVec[cutterIndex + 1];
 
             float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
             float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];

@@ -43,8 +43,8 @@ public:
         if (actionApplied[0] > 0){
             int cutterUsed = (int) actionApplied[0] + 0.25;
             int cutterIndex = (cutterUsed - 1) * 2;
-            float trueCutterHardness = cuttingV2Options_->trueCutterProperties[cutterIndex];
-            float trueCutterSharpness = cuttingV2Options_->trueCutterProperties[cutterIndex + 1];
+            float trueCutterHardness = stateVector[cutterIndex];
+            float trueCutterSharpness = stateVector[cutterIndex + 1];
 
             float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
             float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
