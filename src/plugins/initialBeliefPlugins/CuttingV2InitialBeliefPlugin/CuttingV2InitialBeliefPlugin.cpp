@@ -38,7 +38,6 @@ public:
 
     virtual RobotStateSharedPtr sampleAnInitState() override {
         // debug::show_message(debug::to_string(cuttingV2Options_->numberOfCutters));
-
         // Update components of the resulting vector
         // Sample from uniform distribution to make the transition on the intention value
         unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
@@ -57,6 +56,29 @@ public:
         for (int i = 1; i < numberOfStates; i++){
             initialStateVec[i] = (FloatType) distribution(generator);
         }
+
+        float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
+        float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
+        float objSharpnessLowerBound = cuttingV2Options_->trueObjectSharpnessRange[0];
+        float objSharpnessUpperBound = cuttingV2Options_->trueObjectSharpnessRange[1];
+
+        std::uniform_real_distribution<double> suitableHardnessDistribution(objHardnessLowerBound, objHardnessUpperBound);
+        std::uniform_real_distribution<double> suitableSharpnessDistribution(objSharpnessLowerBound, objSharpnessUpperBound);
+
+        std::vector<int> cutterIndices(numberOfCutters);
+
+        for (int i = 0; i < numberOfCutters; i ++){
+            cutterIndices[i] = i + 1;
+        } 
+
+        std::random_shuffle(cutterIndices.begin(), cutterIndices.end());
+
+        for (int i = 0; i < cuttingV2Options_->numberOfSuitableCutters; i++){
+            int cutterToBeSuitable = cutterIndices[i];
+            int cutterToBeSuitableIndex = 2 * cutterToBeSuitable - 1;
+            initialStateVec[cutterToBeSuitableIndex] = (FloatType) suitableHardnessDistribution(generator);
+            initialStateVec[cutterToBeSuitableIndex + 1] = (FloatType) suitableSharpnessDistribution(generator);
+        } 
 
         // Wrap initial state vector into oppt RobotState structure
         RobotStateSharedPtr initialState = std::make_shared<VectorState>(initialStateVec);

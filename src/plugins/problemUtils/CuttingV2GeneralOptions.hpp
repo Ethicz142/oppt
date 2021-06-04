@@ -44,6 +44,8 @@ public:
     FloatType scanPenalty = 0.0;
     FloatType cutPenalty = 0.0;
 
+    //initial belief variables
+    int numberOfSuitableCutters = 0;
 
     static std::unique_ptr<options::OptionParser> makeParser() {
         std::unique_ptr<options::OptionParser> parser =
@@ -94,6 +96,12 @@ public:
         parser->addOption<FloatType>("rewardPluginOptions",
                                         "cutPenalty",
                                         &CuttingV2GeneralOptions::cutPenalty);
+
+        //intial belief
+
+        parser->addOption<int>("initialBeliefPluginOptions",
+                                        "numberOfSuitableCutters",
+                                        &CuttingV2GeneralOptions::numberOfSuitableCutters);
     }
 };
 }
