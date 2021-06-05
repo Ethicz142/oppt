@@ -65,14 +65,17 @@ public:
         std::uniform_real_distribution<double> suitableHardnessDistribution(objHardnessLowerBound, objHardnessUpperBound);
         std::uniform_real_distribution<double> suitableSharpnessDistribution(objSharpnessLowerBound, objSharpnessUpperBound);
 
+        //create a vector of cutters indices, i.e. 1, .., n; where n is the number of cutters
         std::vector<int> cutterIndices(numberOfCutters);
 
         for (int i = 0; i < numberOfCutters; i ++){
             cutterIndices[i] = i + 1;
         } 
 
+        //shuffle the vector such that we can randomly sample it
         std::random_shuffle(cutterIndices.begin(), cutterIndices.end());
 
+        //enforce cutters to be suitable by sampling from the cutterIndices
         for (int i = 0; i < cuttingV2Options_->numberOfSuitableCutters; i++){
             int cutterToBeSuitable = cutterIndices[i];
             int cutterToBeSuitableIndex = 2 * cutterToBeSuitable - 1;

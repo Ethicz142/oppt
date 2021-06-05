@@ -1,6 +1,7 @@
 import random
 
-NUMBER_OF_CUTTERS = 5
+NUMBER_OF_CUTTERS = 3
+NUMBER_OF_SUITABLE_CUTTERS = 2
 
 with open('modelCuttingV2.cfg', 'r') as reader:
   lines = reader.readlines()
@@ -15,10 +16,8 @@ with open('CuttingV2.cfg', 'w') as writer:
 
     if 'numberOfCutters' in line:
       modified_line = f'numberOfCutters = {NUMBER_OF_CUTTERS}\n'
-    elif 'trueCutterProperties' in line:
-      modified_line = 'trueCutterProperties = ['
-      modified_line += ', '.join([str(round(random.uniform(0,1), 2)) for _ in range(NUMBER_OF_CUTTERS * 2)])
-      modified_line += ']\n'
+    elif 'numberOfSuitableCutters' in line: 
+      modified_line = f'numberOfSuitableCutters = {NUMBER_OF_SUITABLE_CUTTERS}\n'
 
     elif in_State and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
@@ -33,7 +32,7 @@ with open('CuttingV2.cfg', 'w') as writer:
     elif in_Observation and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
     elif in_Observation and 'additionalDimensionLimits' in line: 
-      modified_line = 'additionalDimensionLimits = [[0, 100]' + ', [0, 1]' * NUMBER_OF_CUTTERS * 2 + ']\n'
+      modified_line = 'additionalDimensionLimits = [[0, 9]' + ', [0, 1]' * NUMBER_OF_CUTTERS * 2 + ']\n'
       in_Observation = False
 
     elif 'numInputStepsActions' in line: 
