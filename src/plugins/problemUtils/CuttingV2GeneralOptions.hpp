@@ -40,6 +40,7 @@ public:
     //reward variables
     FloatType objectCutReward = 0.0;
     FloatType damagedPenalty = 0.0;
+    FloatType uncutPenalty = 0.0;
     FloatType scanPenalty = 0.0;
     FloatType cutPenalty = 0.0;
 
@@ -86,6 +87,9 @@ public:
         parser->addOption<FloatType>("rewardPluginOptions",
                                         "damagedPenalty",
                                         &CuttingV2GeneralOptions::damagedPenalty);
+        parser->addOption<FloatType>("rewardPluginOptions",
+                                        "uncutPenalty",
+                                        &CuttingV2GeneralOptions::uncutPenalty);
         parser->addOption<FloatType>("rewardPluginOptions",
                                         "scanPenalty",
                                         &CuttingV2GeneralOptions::scanPenalty);

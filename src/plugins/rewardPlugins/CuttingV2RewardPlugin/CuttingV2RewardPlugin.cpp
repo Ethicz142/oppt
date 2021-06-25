@@ -49,6 +49,10 @@ public:
         if(actionVec[0] == 0){
             return cuttingV2Options_->scanPenalty;
         }
+        // cut action + object is uncut
+        else if (actionVec[0] > 0 && stateVec[0] == 0){
+            return cuttingV2Options_->uncutPenalty + cuttingV2Options_->cutPenalty;
+        }
         // cut action + object is cut
         else if (actionVec[0] > 0 && stateVec[0] == 1){
             return cuttingV2Options_->objectCutReward + cuttingV2Options_->cutPenalty;
