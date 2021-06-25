@@ -46,7 +46,7 @@ public:
         VectorFloat actionVec = propagationResult->action->as<VectorAction>()->asVector(); 
 
         // Check if scan
-        if(actionVec[0] == 0){
+        if(actionVec[0] == -1 || actionVec[0] == 0){
             return cuttingV2Options_->scanPenalty;
         }
         // cut action + object is uncut

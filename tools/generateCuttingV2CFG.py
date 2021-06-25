@@ -26,7 +26,7 @@ with open('CuttingV2.cfg', 'w') as writer:
       in_State = False
 
     elif in_Action and 'additionalDimensionLimits' in line: 
-      modified_line = f'additionalDimensionLimits = [[0, {NUMBER_OF_CUTTERS}]]\n'
+      modified_line = f'additionalDimensionLimits = [[-1, {NUMBER_OF_CUTTERS}]]\n'
       in_Action = False
 
     elif in_Observation and 'additionalDimensions' in line: 
@@ -36,7 +36,7 @@ with open('CuttingV2.cfg', 'w') as writer:
       in_Observation = False
 
     elif 'numInputStepsActions' in line: 
-      modified_line = f'numInputStepsActions = {NUMBER_OF_CUTTERS + 1}\n'
+      modified_line = f'numInputStepsActions = {NUMBER_OF_CUTTERS + 2}\n'
 
     if '[state]' in line:
       in_State = True

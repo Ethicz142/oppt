@@ -69,22 +69,29 @@ public :
         std::uniform_real_distribution<double> hardnessDistribution(-cuttingV2Options_->hardnessErrorBound, cuttingV2Options_->hardnessErrorBound);
         std::uniform_real_distribution<double> sharpnessDistribution(-cuttingV2Options_->sharpnessErrorBound, cuttingV2Options_->sharpnessErrorBound);
         std::uniform_real_distribution<double> damageDistribution(-cuttingV2Options_->damageErrorBound, cuttingV2Options_->damageErrorBound);
-        if (actionVec[0] < 0.5){
+        if (actionVec[0] < -0.5){
+            // The action is scan for hardness
+            //the first observation is for D, skip it
+            for (int i = 1; i < observationVec.size(); i += 2){
+                // for each cutter (hardness, sharpness)
+                float hardnessObservationValue = stateVec[i] + (FloatType) hardnessDistribution(generator);
+
+                observationVec[i] = restrictWithinRange(hardnessObservationValue, 0.0, 1.0);
+            }
+        }
+        else if (actionVec[0] < 0.5){
             // debug::show_message("== SCANNING ==");
             // for (int i = 0; i < stateVec.size(); i ++){
             //     debug::show_message(debug::to_string(stateVec[i]));
             // }
 
-            // The action is scan
+            // The action is scan for sharpness
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                float hardnessObservationValue = stateVec[i] + (FloatType) hardnessDistribution(generator);
                 float sharpnessObservationValue = stateVec[i + 1] + (FloatType) sharpnessDistribution(generator);
                 // debug::show_message(debug::to_string(hardnessObservationValue));
                 // debug::show_message(debug::to_string(sharpnessObservationValue));
-
-                observationVec[i] = restrictWithinRange(hardnessObservationValue, 0.0, 1.0);
                 observationVec[i+1] = restrictWithinRange(sharpnessObservationValue, 0.0, 1.0);
             }
         } else{
