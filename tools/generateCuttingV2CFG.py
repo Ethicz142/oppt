@@ -1,7 +1,7 @@
 import random
 
-NUMBER_OF_CUTTERS = 3
-NUMBER_OF_SUITABLE_CUTTERS = 2
+NUMBER_OF_CUTTERS = 2
+NUMBER_OF_SUITABLE_CUTTERS = 1
 
 with open('modelCuttingV2.cfg', 'r') as reader:
   lines = reader.readlines()
