@@ -1,7 +1,29 @@
-import random
+import random, getopt, sys
 
-NUMBER_OF_CUTTERS = 2
-NUMBER_OF_SUITABLE_CUTTERS = 1
+NUMBER_OF_CUTTERS = None
+NUMBER_OF_SUITABLE_CUTTERS = None
+
+argument_list = sys.argv[1:]
+short_options = "hn:s:"
+long_options = ["help", "number=", "suitable="]
+
+try:
+  arguments, values = getopt.getopt(argument_list, short_options, long_options)
+  for current_argument, current_value in arguments:
+    if current_argument in ("-h", "--help"):
+      print ("-n (Number of cutters) -s (Number of suitable cutters)")
+    elif current_argument in ("-n", "--number"):
+      NUMBER_OF_CUTTERS = int(current_value)
+    elif current_argument in ("-s", "--suitable"):
+      NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
+except getopt.error as err:
+  # Output error, and return with an error code
+  print (str(err))
+  sys.exit(2)
+
+if NUMBER_OF_CUTTERS is None or NUMBER_OF_SUITABLE_CUTTERS is None:
+  print ("Please define: -n (Number of cutters) -s (Number of suitable cutters)")
+  sys.exit(2)
 
 with open('modelCuttingV2.cfg', 'r') as reader:
   lines = reader.readlines()
