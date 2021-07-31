@@ -2,10 +2,11 @@ import random, getopt, sys
 
 NUMBER_OF_CUTTERS = None
 NUMBER_OF_SUITABLE_CUTTERS = None
+STEP_TIMEOUT = None
 
 argument_list = sys.argv[1:]
-short_options = "hn:s:"
-long_options = ["help", "number=", "suitable="]
+short_options = "hn:s:t:"
+long_options = ["help", "number=", "suitable=", "time="]
 
 try:
   arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -16,13 +17,15 @@ try:
       NUMBER_OF_CUTTERS = int(current_value)
     elif current_argument in ("-s", "--suitable"):
       NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
+    elif current_argument in ("-t", "--time"):
+      STEP_TIMEOUT = int(current_value) #in ms
 except getopt.error as err:
   # Output error, and return with an error code
   print (str(err))
   sys.exit(2)
 
-if NUMBER_OF_CUTTERS is None or NUMBER_OF_SUITABLE_CUTTERS is None:
-  print ("Please define: -n (Number of cutters) -s (Number of suitable cutters)")
+if NUMBER_OF_CUTTERS is None or NUMBER_OF_SUITABLE_CUTTERS is None or STEP_TIMEOUT is None:
+  print ("Please define: -n (Number of cutters) -s (Number of suitable cutters) -t (Step timeout)")
   sys.exit(2)
 
 with open('modelCuttingV2.cfg', 'r') as reader:
@@ -40,6 +43,12 @@ with open('CuttingV2.cfg', 'w') as writer:
       modified_line = f'numberOfCutters = {NUMBER_OF_CUTTERS}\n'
     elif 'numberOfSuitableCutters' in line: 
       modified_line = f'numberOfSuitableCutters = {NUMBER_OF_SUITABLE_CUTTERS}\n'
+
+    elif 'logPath' in line:
+      modified_line = f'logPath = log/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{STEP_TIMEOUT}\n'
+
+    elif 'stepTimeout' in line:
+      modified_line = f'stepTimeout = {STEP_TIMEOUT}\n'
 
     elif in_State and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
