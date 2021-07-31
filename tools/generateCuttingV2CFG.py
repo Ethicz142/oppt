@@ -3,10 +3,11 @@ import random, getopt, sys
 NUMBER_OF_CUTTERS = None
 NUMBER_OF_SUITABLE_CUTTERS = None
 STEP_TIMEOUT = None
+OUTPUT = None
 
 argument_list = sys.argv[1:]
-short_options = "hn:s:t:"
-long_options = ["help", "number=", "suitable=", "time="]
+short_options = "hn:s:t:o:"
+long_options = ["help", "number=", "suitable=", "time=", "output="]
 
 try:
   arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -19,6 +20,8 @@ try:
       NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
     elif current_argument in ("-t", "--time"):
       STEP_TIMEOUT = int(current_value) #in ms
+    elif current_argument in ("-o", "--output"):
+      OUTPUT = str(current_value) 
 except getopt.error as err:
   # Output error, and return with an error code
   print (str(err))
@@ -31,7 +34,7 @@ if NUMBER_OF_CUTTERS is None or NUMBER_OF_SUITABLE_CUTTERS is None or STEP_TIMEO
 with open('modelCuttingV2.cfg', 'r') as reader:
   lines = reader.readlines()
 
-with open('CuttingV2.cfg', 'w') as writer:
+with open(OUTPUT, 'w') as writer:
   in_State = False
   in_Action = False
   in_Observation = False
