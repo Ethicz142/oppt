@@ -83,13 +83,13 @@ for line in lines:
     object_state = None
     discounted_rewards.append(float(line.split(' ')[2]))
 
-print(discounted_rewards)
+# print(discounted_rewards)
 mean, lower_interval, upper_interval = mean_confidence_interval(discounted_rewards)
-print(mean_confidence_interval(discounted_rewards))
-print(len(number_of_actions), number_of_actions, sum(number_of_actions))
-print(mean_confidence_interval(number_of_actions))
+# print(mean_confidence_interval(discounted_rewards))
+# print(len(number_of_actions), number_of_actions, sum(number_of_actions))
+# print(mean_confidence_interval(number_of_actions))
 mean_a, lower_a, upper_a = mean_confidence_interval(number_of_actions)
-print(len(final_object_states), final_object_states, number_of_actions.count(1)/len(final_object_states))
+# print(len(final_object_states), final_object_states, number_of_actions.count(1)/len(final_object_states))
 
 # with open(DIR_PATH + f"/../runs/{REWARDS_SCHEMA}/" + "run_results.csv", "a+", encoding='UTF8', newline='') as f:
 #   writer = csv.writer(f)
