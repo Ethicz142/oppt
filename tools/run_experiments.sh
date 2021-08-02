@@ -4,7 +4,7 @@ do
   do
     echo "----------------" "$n""_""2""_""$t"
     python3 ~/Honours/oppt/tools/generateCuttingV2CFG.py -n $n -s 2 -t $t -o ~/Honours/oppt/runs/rs1/batch_1/cfgs/"$n"_2_"$t"-CuttingV2.cfg 
-    ~/Honours/ABTLite-master/bin/./abtLite --cfg ~/Honours/oppt/runs/rs1/batch_1/cfgs/"$n"_2_"$t"-CuttingV2.cfg > ~/Honours/oppt/runs/rs1/batch_1/"$n"_2_"$t".txt
+    ~/Honours/ABTLite/bin/./abtLite --cfg ~/Honours/oppt/runs/rs1/batch_1/cfgs/"$n"_2_"$t"-CuttingV2.cfg > ~/Honours/oppt/runs/rs1/batch_1/"$n"_2_"$t".txt
     python3 ~/Honours/oppt/tools/extract_stats.py -n $n -s 2 -t $t -i ~/Honours/oppt/runs/rs1/batch_1/"$n"_2_"$t".txt -o ~/Honours/oppt/runs/rs1/batch_1/run_results.csv
   done
 done
