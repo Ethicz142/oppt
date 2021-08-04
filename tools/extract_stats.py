@@ -117,5 +117,5 @@ with open (OUTPUT, 'a') as csvfile:
     'mean num actions' :mean_a, 
     'lower num actions': lower_a, 
     'upper num actions': upper_a, 
-    'cut %': number_of_actions.count(1)/len(final_object_states)
+    'cut %': final_object_states.count(1)/len(final_object_states)
   })
