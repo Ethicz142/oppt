@@ -1,6 +1,8 @@
+#!/bin/bash
+
 for n in 3 5 7 9 11
 do
-  for t in 10000
+  for t in 1000 3000 5000 10000
   do
     echo "----------------" "$n""_""2""_""$t"
     python3 ~/Honours/oppt/tools/generateCuttingV2CFG.py -n $n -s 2 -t $t -o ~/Honours/oppt/runs/rs1/batch_1/cfgs/"$n"_2_"$t"-CuttingV2.cfg 

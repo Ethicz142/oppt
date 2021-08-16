@@ -72,7 +72,7 @@ public:
                 // hardness & sharpness in optimal range
                 if (trueCutterHardness <= objHardnessUpperBound && trueCutterSharpness <= objSharpnessUpperBound){
                     // debug::show_message("optimal");
-                    if (sample <= 0.95){
+                    if (sample <= 0.90){
                         resultingState[0] = 1;
                     }                    
                 }
@@ -94,7 +94,7 @@ public:
                 }
                 //high hardness & sharpness
                 else if (trueCutterHardness > objHardnessUpperBound && trueCutterSharpness > objSharpnessUpperBound){
-                    if (sample <= 0.5){
+                    if (sample <= 0.9){
                         resultingState[0] = 1;
                     } else{
                         resultingState[0] = 2;
@@ -119,15 +119,21 @@ public:
                 //low hardness, optimal sharpness
                 if (trueCutterSharpness <= objSharpnessUpperBound){
                     if (sample <= 0.3){
-                        resultingState[0] = 1;
+                        resultingState[0] = 2;
                     }  
                 }
                 //low hardness, high sharpness
                 if (trueCutterSharpness > objSharpnessUpperBound){
-                    if (sample <= 0.4){
+                    if (sample <= 0.3){
                         resultingState[0] = 1;
                     }  
                 }
+            }
+            else {
+                //low hardness and low sharpness
+                if (sample <= 0.1){
+                    resultingState[0] = 2;
+                }  
             }
 
         }
