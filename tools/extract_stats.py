@@ -19,6 +19,9 @@ def mean_confidence_interval(data, confidence=0.95):
 
 REWARDS_SCHEMA = 'rs1'
 
+trueObjectHardnessRange = [0.5, 0.7]
+trueObjectSharpnessRange = [0.8, 0.9]
+
 FILE_NAME = None
 INPUT = None 
 OUTPUT = None
@@ -64,6 +67,7 @@ if not lines:
 discounted_rewards = []
 number_of_actions = []
 final_object_states = []
+exact_num_of_suitable_cutters = 0;
 
 num_actions_in_run = 0
 object_state = None
@@ -82,6 +86,18 @@ for line in lines:
     num_actions_in_run = 0
     object_state = None
     discounted_rewards.append(float(line.split(' ')[2]))
+  elif 'Initial state:' in line:
+    #looks like this: Initial state: 0 0.594173 0.815712 0.314861 0.584668 0.546172 0.891896 w: 1
+    stateValues = line.split(' ')[3:-2];
+    ns = 0
+    for i in range(0, len(stateValues), 2):
+      hardness = float(stateValues[i])
+      sharpness = float(stateValues[i+1])
+      if hardness >= trueObjectHardnessRange[0] and hardness <= trueObjectHardnessRange[1] and sharpness >= trueObjectSharpnessRange[0] and sharpness <= trueObjectSharpnessRange[1]:
+        ns += 1
+    if ns == NUMBER_OF_SUITABLE_CUTTERS:
+      exact_num_of_suitable_cutters += 1
+
 
 # print(discounted_rewards)
 mean, lower_interval, upper_interval = mean_confidence_interval(discounted_rewards)
@@ -99,7 +115,7 @@ file_exists = os.path.isfile(OUTPUT)
 with open (OUTPUT, 'a') as csvfile:
   headers = ['number of cutters', 'minimum number of suitable cutters', 'runs', 'time',
     'mean discounted reward', 'lower discounted reward', 'upper discounted reward', 
-    'mean num actions', 'lower num actions', 'upper num actions', 'cut %']
+    'mean num actions', 'lower num actions', 'upper num actions', 'cut %', 'exact num of suitable cutters %']
   writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=headers)
 
   if not file_exists:
@@ -117,5 +133,6 @@ with open (OUTPUT, 'a') as csvfile:
     'mean num actions' :mean_a, 
     'lower num actions': lower_a, 
     'upper num actions': upper_a, 
-    'cut %': final_object_states.count("1")/len(final_object_states)
+    'cut %': final_object_states.count("1")/len(final_object_states),
+    'exact num of suitable cutters %': exact_num_of_suitable_cutters/len(final_object_states)
   })
