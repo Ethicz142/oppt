@@ -51,16 +51,44 @@ public:
         // Allocate a random state based on sample
         VectorFloat initialStateVec(numberOfStates, 0);
 
-        //the object is uncut (0), hence why we start at i = 1
-        //random sharpness & hardness for the cutters, we don't know what they are until we scan
-        for (int i = 1; i < numberOfStates; i++){
-            initialStateVec[i] = (FloatType) distribution(generator);
-        }
-
         float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
         float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
         float objSharpnessLowerBound = cuttingV2Options_->trueObjectSharpnessRange[0];
         float objSharpnessUpperBound = cuttingV2Options_->trueObjectSharpnessRange[1];
+
+        float objHardnessOptimalRange = objHardnessUpperBound - objHardnessLowerBound;
+        float objSharpnessOptimalRange = objSharpnessUpperBound - objSharpnessLowerBound;
+        std::uniform_real_distribution<double> unsuitableHardnessDistribution(0, 1.0f - objHardnessOptimalRange);
+        std::uniform_real_distribution<double> unsuitableSharpnessDistribution(0, 1.0f - objSharpnessOptimalRange);
+
+        //the object is uncut (0), hence why we start at i = 1
+        //random sharpness & hardness for the cutters, we don't know what they are until we scan
+        for (int i = 1; i < numberOfStates; i += 2){
+            //are we going to enforce the hardness or sharpness property to be unsuitable
+            // as we only need either one to be out of range to ensure it is not a suitable cutter
+            float enforceHardnessOrSharpnessToBeUnsuitable = (FloatType) distribution(generator);
+            //enforce hardness
+            if (enforceHardnessOrSharpnessToBeUnsuitable <= 0.5) {
+                float unsuitableHardnessValue = (FloatType) unsuitableHardnessDistribution(generator);
+                if (unsuitableHardnessValue >= objHardnessLowerBound){
+                    //push it past the optimal range
+                    unsuitableHardnessValue += objHardnessOptimalRange;
+                }
+                initialStateVec[i] = unsuitableHardnessValue;
+                initialStateVec[i + 1] =  (FloatType) distribution(generator);
+
+            //enforce sharpness
+            } else {
+                float unsuitableSharpnessValue = (FloatType) unsuitableSharpnessDistribution(generator);
+                if (unsuitableSharpnessValue >= objSharpnessLowerBound){
+                    //push it past the optimal range
+                    unsuitableSharpnessValue += objSharpnessOptimalRange;
+                }
+                initialStateVec[i] = (FloatType) distribution(generator);
+                initialStateVec[i + 1] =  unsuitableSharpnessValue;
+            }
+        }
+
 
         std::uniform_real_distribution<double> suitableHardnessDistribution(objHardnessLowerBound, objHardnessUpperBound);
         std::uniform_real_distribution<double> suitableSharpnessDistribution(objSharpnessLowerBound, objSharpnessUpperBound);
