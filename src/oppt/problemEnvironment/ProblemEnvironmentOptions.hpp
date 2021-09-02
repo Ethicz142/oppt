@@ -46,6 +46,8 @@ struct ProblemEnvironmentOptions : public oppt::Options {
     /** The discount factor of the PODMP. */
     FloatType discountFactor = 1.0;
 
+    FloatType a = 1.0;
+
     /** @brief Determines if states for which the robot collides with an body
      * are terminal states
      */
@@ -196,6 +198,7 @@ struct ProblemEnvironmentOptions : public oppt::Options {
         parser->addOption<std::string>("problem", "robotName", &ProblemEnvironmentOptions::robotName);
         parser->addOptionWithDefault<bool>("problem", "allowCollisions", &ProblemEnvironmentOptions::allowCollisions, false);
         parser->addOption<FloatType>("problem", "discountFactor", &ProblemEnvironmentOptions::discountFactor);
+        parser->addOptionWithDefault<FloatType>("problem", "a", &ProblemEnvironmentOptions::a, 1.0);
         parser->addOption<FloatType>("problem", "stepTimeout", &ProblemEnvironmentOptions::stepTimeout);
     }
 
