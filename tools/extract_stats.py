@@ -26,9 +26,10 @@ FILE_NAME = None
 INPUT = None 
 OUTPUT = None
 TIME = None
+A_VALUE = 1.0
 argument_list = sys.argv[1:]
-short_options = "hn:s:t:i:o:"
-long_options = ["help", "number=", "suitable=", "time=", "input=", "output="]
+short_options = "hn:s:a:t:i:o:"
+long_options = ["help", "number=", "suitable=", "a=", "time=", "input=", "output="]
 
 try:
   arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -45,6 +46,8 @@ try:
       NUMBER_OF_CUTTERS = int(current_value)
     elif current_argument in ("-s", "--suitable"):
       NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
+    elif current_argument in ("-a", "--a"):
+      A_VALUE = float(current_value)
 except getopt.error as err:
   # Output error, and return with an error code
   print (str(err))
@@ -113,7 +116,7 @@ mean_a, lower_a, upper_a = mean_confidence_interval(number_of_actions)
 file_exists = os.path.isfile(OUTPUT)
 
 with open (OUTPUT, 'a') as csvfile:
-  headers = ['number of cutters', 'minimum number of suitable cutters', 'runs', 'time',
+  headers = ['number of cutters', 'minimum number of suitable cutters', 'runs', 'a', 'time',
     'mean discounted reward', 'lower discounted reward', 'upper discounted reward', 
     'mean num actions', 'lower num actions', 'upper num actions', 'cut %', 'exact num of suitable cutters %']
   writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=headers)
@@ -126,6 +129,7 @@ with open (OUTPUT, 'a') as csvfile:
     'number of cutters': NUMBER_OF_CUTTERS,
     'minimum number of suitable cutters': NUMBER_OF_SUITABLE_CUTTERS,
     'runs': len(discounted_rewards),
+    'a' : A_VALUE,
     'time': TIME,
     'mean discounted reward': mean,
     'lower discounted reward': lower_interval,

@@ -2,12 +2,13 @@ import random, getopt, sys
 
 NUMBER_OF_CUTTERS = None
 NUMBER_OF_SUITABLE_CUTTERS = None
+A_VALUE = 1.0
 STEP_TIMEOUT = None
 OUTPUT = None
 
 argument_list = sys.argv[1:]
-short_options = "hn:s:t:o:"
-long_options = ["help", "number=", "suitable=", "time=", "output="]
+short_options = "hn:s:a:t:o:"
+long_options = ["help", "number=", "suitable=","a=", "time=", "output="]
 
 try:
   arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -18,6 +19,8 @@ try:
       NUMBER_OF_CUTTERS = int(current_value)
     elif current_argument in ("-s", "--suitable"):
       NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
+    elif current_argument in ("-a", "--a"):
+      A_VALUE = float(current_value)
     elif current_argument in ("-t", "--time"):
       STEP_TIMEOUT = int(current_value) #in ms
     elif current_argument in ("-o", "--output"):
@@ -52,6 +55,9 @@ with open(OUTPUT, 'w') as writer:
 
     elif 'stepTimeout' in line:
       modified_line = f'stepTimeout = {STEP_TIMEOUT}\n'
+    
+    elif 'a =' in line:
+      modified_line = f'a = {A_VALUE}\n'
 
     elif in_State and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
