@@ -2,7 +2,7 @@ import random, getopt, sys
 
 NUMBER_OF_CUTTERS = None
 NUMBER_OF_SUITABLE_CUTTERS = None
-A_VALUE = 1.0
+A_VALUE = 100
 STEP_TIMEOUT = None
 OUTPUT = None
 
@@ -20,7 +20,7 @@ try:
     elif current_argument in ("-s", "--suitable"):
       NUMBER_OF_SUITABLE_CUTTERS = int(current_value)
     elif current_argument in ("-a", "--a"):
-      A_VALUE = float(current_value)
+      A_VALUE = int(current_value)
     elif current_argument in ("-t", "--time"):
       STEP_TIMEOUT = int(current_value) #in ms
     elif current_argument in ("-o", "--output"):
@@ -51,13 +51,13 @@ with open(OUTPUT, 'w') as writer:
       modified_line = f'numberOfSuitableCutters = {NUMBER_OF_SUITABLE_CUTTERS}\n'
 
     elif 'logPath' in line:
-      modified_line = f'logPath = log/rs2/batch_1/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{STEP_TIMEOUT}\n'
+      modified_line = f'logPath = log/rs2/batch_1/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{A_VALUE}_{STEP_TIMEOUT}\n'
 
     elif 'stepTimeout' in line:
       modified_line = f'stepTimeout = {STEP_TIMEOUT}\n'
     
     elif 'a =' in line:
-      modified_line = f'a = {A_VALUE}\n'
+      modified_line = f'a = {A_VALUE/100}\n'
 
     elif in_State and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
