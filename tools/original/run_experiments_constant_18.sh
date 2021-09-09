@@ -1,0 +1,12 @@
+#!/bin/bash
+
+n=18
+for s in 5 3 1
+do
+  for t in 1000 3000
+  do
+    echo "----------------" "$n""_""$s""_""$t"
+    python3 ~/Honours/oppt/tools/generateCuttingV2CFG.py -n $n -s $s -t $t -o ~/Honours/oppt/runsexact/rs2/batch_1/cfgs/"$n"_"$s"_"$t"-CuttingV2.cfg 
+    ~/Honours/ABTLiteOriginal/bin/./abtLite --cfg ~/Honours/oppt/runsexact/rs2/batch_1/cfgs/"$n"_"$s"_"$t"-CuttingV2.cfg > ~/Honours/oppt/runsexact/rs2/batch_1/"$n"_"$s"_"$t".txt
+  done
+done
