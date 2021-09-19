@@ -51,7 +51,7 @@ with open(OUTPUT, 'w') as writer:
       modified_line = f'numberOfSuitableCutters = {NUMBER_OF_SUITABLE_CUTTERS}\n'
 
     elif 'logPath' in line:
-      modified_line = f'logPath = log/rs2/batch_1/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{A_VALUE}_{STEP_TIMEOUT}\n'
+      modified_line = f'logPath = log/rs3/batch_1/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{A_VALUE}_{STEP_TIMEOUT}\n'
 
     elif 'stepTimeout' in line:
       modified_line = f'stepTimeout = {STEP_TIMEOUT}\n'
