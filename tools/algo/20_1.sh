@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=runsobvsalgo/rs3/test
-n=5
+n=20
 r=5
 for t in 1000
 do

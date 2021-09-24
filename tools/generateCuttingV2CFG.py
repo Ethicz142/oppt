@@ -5,10 +5,11 @@ NUMBER_OF_SUITABLE_CUTTERS = None
 A_VALUE = 100
 STEP_TIMEOUT = None
 OUTPUT = None
+RUNS = 500
 
 argument_list = sys.argv[1:]
-short_options = "hn:s:a:t:o:"
-long_options = ["help", "number=", "suitable=","a=", "time=", "output="]
+short_options = "hn:s:a:t:r:o:"
+long_options = ["help", "number=", "suitable=","a=", "time=","runs", "output="]
 
 try:
   arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -25,6 +26,8 @@ try:
       STEP_TIMEOUT = int(current_value) #in ms
     elif current_argument in ("-o", "--output"):
       OUTPUT = str(current_value) 
+    elif current_argument in ("-r", "--runs"):
+      RUNS = int(current_value) 
 except getopt.error as err:
   # Output error, and return with an error code
   print (str(err))
@@ -51,13 +54,16 @@ with open(OUTPUT, 'w') as writer:
       modified_line = f'numberOfSuitableCutters = {NUMBER_OF_SUITABLE_CUTTERS}\n'
 
     elif 'logPath' in line:
-      modified_line = f'logPath = log/rs3/batch_1/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{A_VALUE}_{STEP_TIMEOUT}\n'
+      modified_line = f'logPath = log/{NUMBER_OF_CUTTERS}_{NUMBER_OF_SUITABLE_CUTTERS}_{A_VALUE}_{STEP_TIMEOUT}\n'
 
     elif 'stepTimeout' in line:
       modified_line = f'stepTimeout = {STEP_TIMEOUT}\n'
     
     elif 'a =' in line:
       modified_line = f'a = {A_VALUE/100}\n'
+    
+    elif 'nRuns =' in line:
+      modified_line = f'nRuns = {RUNS}\n'
 
     elif in_State and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
@@ -72,7 +78,7 @@ with open(OUTPUT, 'w') as writer:
     elif in_Observation and 'additionalDimensions' in line: 
       modified_line = f'additionalDimensions = {NUMBER_OF_CUTTERS * 2 + 1}\n'
     elif in_Observation and 'additionalDimensionLimits' in line: 
-      modified_line = 'additionalDimensionLimits = [[0, 9]' + ', [0, 1]' * NUMBER_OF_CUTTERS * 2 + ']\n'
+      modified_line = 'additionalDimensionLimits = [[0, 9]' + ', [0, 3]' * NUMBER_OF_CUTTERS * 2 + ']\n'
       in_Observation = False
 
     elif 'numInputStepsActions' in line: 
