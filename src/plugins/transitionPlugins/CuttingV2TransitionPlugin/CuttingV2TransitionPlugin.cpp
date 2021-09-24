@@ -41,7 +41,7 @@ public:
         
         //not scan, scan doesn't change the state
         if (actionApplied[0] > 0){
-            int cutterUsed = (int) actionApplied[0] + 0.25;
+            int cutterUsed = (int) (actionApplied[0] + 0.25);
             int cutterIndex = 2 * cutterUsed - 1;
             float trueCutterHardness = stateVector[cutterIndex];
             float trueCutterSharpness = stateVector[cutterIndex + 1];
