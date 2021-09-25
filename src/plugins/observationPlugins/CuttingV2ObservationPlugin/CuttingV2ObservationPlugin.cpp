@@ -64,6 +64,10 @@ public :
 
     FloatType getSensorCorrectnessProbability(const int& observation, const FloatType& trueCutterPropertyValue, const FloatType& lowerBound, const FloatType& upperBound, const FloatType& error) const {
         int trueObservation = getLowOptimalHighValue(trueCutterPropertyValue, lowerBound, upperBound);
+        if (std::abs(trueObservation - observation) > 1 ){
+            return 0.0f;
+        }
+
         float lowerErrorValue = restrictWithinRange(trueCutterPropertyValue - error, 0.0, 1.0);
         float upperErrorValue = restrictWithinRange(trueCutterPropertyValue + error, 0.0, 1.0);
 
@@ -83,7 +87,6 @@ public :
             closestLowerBound = upperBound;
             closestUpperBound = 1.0f;
         }
-
 
         if (trueObservation == observation){
             if (lowerErrorObservation == trueObservation && trueObservation == upperErrorObservation ){
@@ -200,7 +203,11 @@ public :
             float likelihood = 1.0f;
             // debug::show_message("---------- CALC -------------");
             for (int i = 0; i < observationVec.size(); i++){
-                // debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]));
+                // if (i % 2 == 1){
+                //     debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]) + " = " + debug::to_string(getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound)));
+                // } else {
+                //     debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]));
+                // }
                 // debug::show_message(debug::to_string(stateVec[i]));
                 if (observationVec[i] != 0) {
                     //example obvs: 0 3 0 3 0
