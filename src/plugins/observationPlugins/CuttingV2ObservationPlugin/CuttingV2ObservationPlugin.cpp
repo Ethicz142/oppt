@@ -67,6 +67,13 @@ public :
         if (std::abs(trueObservation - observation) > 1 ){
             return 0.0f;
         }
+        if (error == 0){
+            if (trueObservation != observation) {
+                return 0.0f;
+            } else {
+                return 1.0f;
+            }
+        }
 
         float lowerErrorValue = restrictWithinRange(trueCutterPropertyValue - error, 0.0, 1.0);
         float upperErrorValue = restrictWithinRange(trueCutterPropertyValue + error, 0.0, 1.0);
@@ -228,8 +235,6 @@ public :
                     } 
                 }
             }
-            if (likelihood < 0.0001)
-                return 0.000001;
             // debug::show_message("---------- CALC ENDED -------------");
             // debug::show_message(debug::to_string(likelihood));
             return likelihood;
@@ -244,8 +249,6 @@ public :
                     } 
                 }
             }
-            if (likelihood < 0.0001)
-                return 0.000001;
             return likelihood;
         } else {
             int cutterUsed = (int) (actionVec[0] + 0.25);
@@ -272,8 +275,6 @@ public :
                     }
                 }
             }
-            if (likelihood < 0.0001)
-                return 0.000001;
             return likelihood;
         }
 
