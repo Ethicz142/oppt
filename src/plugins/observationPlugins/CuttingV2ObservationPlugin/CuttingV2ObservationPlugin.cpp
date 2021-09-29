@@ -63,56 +63,38 @@ public :
     }
 
     FloatType getSensorCorrectnessProbability(const int& observation, const FloatType& trueCutterPropertyValue, const FloatType& lowerBound, const FloatType& upperBound, const FloatType& error) const {
-        int trueObservation = getLowOptimalHighValue(trueCutterPropertyValue, lowerBound, upperBound);
-        if (std::abs(trueObservation - observation) > 1 ){
-            return 0.0f;
-        }
-        if (error == 0){
-            if (trueObservation != observation) {
-                return 0.0f;
-            } else {
-                return 1.0f;
-            }
-        }
-
         float lowerErrorValue = restrictWithinRange(trueCutterPropertyValue - error, 0.0, 1.0);
         float upperErrorValue = restrictWithinRange(trueCutterPropertyValue + error, 0.0, 1.0);
 
-        int lowerErrorObservation = getLowOptimalHighValue(lowerErrorValue, lowerBound, upperBound);
-        int upperErrorObservation = getLowOptimalHighValue(upperErrorValue, lowerBound, upperBound);
+        float observationLowerBound;
+        float observationUpperBound;
 
-        float closestLowerBound;
-        float closestUpperBound;
-
-        if (trueCutterPropertyValue < lowerBound) {
-            closestLowerBound = 0.0f;
-            closestUpperBound = lowerBound;
-        } else if (trueCutterPropertyValue >= lowerBound && trueCutterPropertyValue <= upperBound) {
-            closestLowerBound = lowerBound;
-            closestUpperBound = upperBound;
+        if (observation == 1) {
+            observationLowerBound = 0.0f;
+            observationUpperBound = lowerBound;
+        } else if (observation == 2) {
+            observationLowerBound = lowerBound;
+            observationUpperBound = upperBound;
+        } else if (observation == 3){
+            observationLowerBound = upperBound;
+            observationUpperBound = 1.0f;
+        } else if (observation == 0) {
+            return 1.0f;
         } else {
-            closestLowerBound = upperBound;
-            closestUpperBound = 1.0f;
+            return 0.0f;
         }
 
-        if (trueObservation == observation){
-            if (lowerErrorObservation == trueObservation && trueObservation == upperErrorObservation ){
+        //https://scicomp.stackexchange.com/questions/26258/the-easiest-way-to-find-intersection-of-two-intervals
+        if (observationLowerBound > upperErrorValue || lowerErrorValue > observationUpperBound){
+            return 0.0f;
+        } else {
+            if (error == 0) {
                 return 1.0f;
             } else {
-                float overFlowUpperBound = std::max(upperErrorValue - closestUpperBound, 0.0f);
-                float overFlowLowerBound =  std::max(closestLowerBound - lowerErrorValue, 0.0f);
-                return (upperErrorValue - lowerErrorValue - overFlowLowerBound - overFlowUpperBound) / (upperErrorValue - lowerErrorValue);
+                float overlap = std::min(observationUpperBound, upperErrorValue) - std::max(observationLowerBound, lowerErrorValue);
+                return overlap / (upperErrorValue - lowerErrorValue);
             }
-        } else if (trueObservation > observation){
-            // ASSUMES THAT THE ERROR CAN'T GO ACCROSS MORE THAN 1 RANGE
-            float overFlowLowerBound =  std::max(closestLowerBound - lowerErrorValue, 0.0f);
-            return (overFlowLowerBound) / (upperErrorValue - lowerErrorValue);
-        } else if (trueObservation < observation) {
-            // ASSUMES THAT THE ERROR CAN'T GO ACCROSS MORE THAN 1 RANGE
-            float overFlowUpperBound = std::max(upperErrorValue - closestUpperBound, 0.0f);
-            return (overFlowUpperBound) / (upperErrorValue - lowerErrorValue);
         }
-        return 0.0f;
     }
 
     virtual bool load(const std::string& optionsFile) override {
@@ -209,31 +191,17 @@ public :
         if (actionVec[0] < -0.5) {
             float likelihood = 1.0f;
             // debug::show_message("---------- CALC -------------");
-            for (int i = 0; i < observationVec.size(); i++){
-                // if (i % 2 == 1){
-                //     debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]) + " = " + debug::to_string(getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound)));
-                // } else {
-                //     debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]));
-                // }
-                // debug::show_message(debug::to_string(stateVec[i]));
-                if (observationVec[i] != 0) {
-                    //example obvs: 0 3 0 3 0
-                    //if i starts at 0, then when i is odd we get hardness
-                    if (i % 2 == 1) {
-                        //hardness
-                        // if (getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound) == 0) {
-                        //     debug::show_message("ZERO ?");
-                        //     debug::show_message(debug::to_string(stateVec[i]));
-                        //     debug::show_message(debug::to_string(observationVec[i]));
-                        // } else {
-                        //     debug::show_message("NON ZERO ?");
-                        //     debug::show_message(debug::to_string(stateVec[i]));
-                        //     debug::show_message(debug::to_string(observationVec[i]));
-                        // }
-                        // debug::show_message(debug::to_string(getSensorCorrectnessProbability((unsigned int)(observationVec[0] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound)));
-                        likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound);
-                    } 
-                }
+            // for (int i = 0; i < observationVec.size(); i ++){
+            //     debug::show_message(debug::to_string(observationVec[i]) + " -  " + debug::to_string(stateVec[i]));
+            // }
+
+            //example obvs: 0 3 0 3 0
+            //if i starts at 0, then when i is odd we get hardness
+            //first hardness observation is at 1
+            for (int i = 1; i < observationVec.size(); i += 2){       
+                // debug::show_message(debug::to_string(observationVec[i]) + " -  " + 
+                //         debug::to_string(stateVec[i]) + " = " + debug::to_string(getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound)));
+                likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound);
             }
             // debug::show_message("---------- CALC ENDED -------------");
             // debug::show_message(debug::to_string(likelihood));
@@ -241,13 +209,10 @@ public :
         }
         else if (actionVec[0] < 0.5) {
             float likelihood = 1.0f;
-            for (int i = 0; i < observationVec.size(); i++){
-                if (observationVec[i] != 0) {
-                    if (i % 2 == 0) {
-                        //sharpness
-                        likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objSharpnessLowerBound, objSharpnessUpperBound, cuttingV2Options_->sharpnessErrorBound);
-                    } 
-                }
+            // i = 2 is the start of the first sharpness observation, then it is every second one
+            for (int i = 2; i < observationVec.size(); i += 2){
+                //sharpness
+                likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), stateVec[i], objSharpnessLowerBound, objSharpnessUpperBound, cuttingV2Options_->sharpnessErrorBound);
             }
             return likelihood;
         } else {
@@ -256,25 +221,8 @@ public :
             float trueCutterHardness = stateVec[cutterIndex];
             float trueCutterSharpness = stateVec[cutterIndex + 1];
 
-            float likelihood = 1;
-            for (int i = 0; i < observationVec.size(); i++){
-                if (observationVec[i] != 0) {
-                    if (i % 2 == 1) {
-                        // if (i != cutterIndex) debug::show_message("---------- SOMETHING IS WRONG H -------------");
-                        
-
-                        //hardness
-                        likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), trueCutterHardness, objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound);
-                    }
-                    if (i % 2 == 0) {
-                        // if (i != cutterIndex + 1) debug::show_message("SOMETHING IS WRONG S ");
-                      
-
-                        //sharpness
-                        likelihood = likelihood * getSensorCorrectnessProbability((unsigned int)(observationVec[i] + 0.25), trueCutterSharpness, objSharpnessLowerBound, objSharpnessUpperBound, cuttingV2Options_->sharpnessErrorBound);
-                    }
-                }
-            }
+            float likelihood = getSensorCorrectnessProbability((unsigned int)(observationVec[cutterIndex] + 0.25), trueCutterHardness, objHardnessLowerBound, objHardnessUpperBound, cuttingV2Options_->hardnessErrorBound)
+                                * getSensorCorrectnessProbability((unsigned int)(observationVec[cutterIndex + 1] + 0.25), trueCutterSharpness, objSharpnessLowerBound, objSharpnessUpperBound, cuttingV2Options_->sharpnessErrorBound);
             return likelihood;
         }
 
