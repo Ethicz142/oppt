@@ -53,6 +53,54 @@ public :
         }
     }
 
+    int getStochasticLowOptimalHighValue(const float& number, const float lowerBound, const float upperBound, const float& prob, const float& error) const {
+        //low -> 1
+        //optimal -> 2
+        //high -> 3
+        float observationLowerBound;
+        float observationUpperBound;
+
+        int trueObservation;
+        int otherObservation1;
+        int otherObservation2;
+        if (number < lowerBound){
+            trueObservation = 1;
+            otherObservation1 = 2;
+            otherObservation2 = 3;
+            observationLowerBound = 0.0f;
+            observationUpperBound = lowerBound;
+        } 
+        else if (number >= lowerBound && number <= upperBound){
+            trueObservation = 2;
+            otherObservation1 = 1;
+            otherObservation2 = 3;
+            observationLowerBound = lowerBound;
+            observationUpperBound = upperBound;
+        }
+        else {
+            trueObservation = 3;
+            otherObservation1 = 1;
+            otherObservation2 = 2;
+            observationLowerBound = upperBound;
+            observationUpperBound = 1.0f;
+        }
+
+        float cutoff = 1.0f - error * (1.0f - (observationUpperBound - observationLowerBound));
+
+        if (prob <= cutoff) {
+            return trueObservation;
+        } else{
+            unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+            std::default_random_engine generator(seed1);
+            std::uniform_real_distribution<double> randomObservation(0.0f, 1.0f);
+            if ((FloatType) randomObservation(generator) <= 0.5){
+                return otherObservation1;
+            } else {
+                return otherObservation2;
+            }
+        }
+    } 
+
     int getCutterObservation(const float& sample, const float& probability, const int correctObservation, const std::vector<int>& incorrectObservations) const{
         if (sample <= probability){
             return correctObservation;
@@ -63,8 +111,7 @@ public :
     }
 
     FloatType getSensorCorrectnessProbability(const int& observation, const FloatType& trueCutterPropertyValue, const FloatType& lowerBound, const FloatType& upperBound, const FloatType& error) const {
-        float lowerErrorValue = restrictWithinRange(trueCutterPropertyValue - error, 0.0, 1.0);
-        float upperErrorValue = restrictWithinRange(trueCutterPropertyValue + error, 0.0, 1.0);
+        int trueCutterObservation = getLowOptimalHighValue(trueCutterPropertyValue, lowerBound, upperBound);
 
         float observationLowerBound;
         float observationUpperBound;
@@ -84,16 +131,10 @@ public :
             return 0.0f;
         }
 
-        //https://scicomp.stackexchange.com/questions/26258/the-easiest-way-to-find-intersection-of-two-intervals
-        if (observationLowerBound > upperErrorValue || lowerErrorValue > observationUpperBound){
-            return 0.0f;
+        if (trueCutterObservation == observation) {
+            return 1.0f - error * (1.0f - (observationUpperBound - observationLowerBound));
         } else {
-            if (error == 0) {
-                return 1.0f;
-            } else {
-                float overlap = std::min(observationUpperBound, upperErrorValue) - std::max(observationLowerBound, lowerErrorValue);
-                return overlap / (upperErrorValue - lowerErrorValue);
-            }
+            return error * (1.0f - (observationUpperBound - observationLowerBound)) / 2.0f;
         }
     }
 
@@ -119,6 +160,7 @@ public :
         std::uniform_real_distribution<double> hardnessDistribution(-cuttingV2Options_->hardnessErrorBound, cuttingV2Options_->hardnessErrorBound);
         std::uniform_real_distribution<double> sharpnessDistribution(-cuttingV2Options_->sharpnessErrorBound, cuttingV2Options_->sharpnessErrorBound);
         std::uniform_real_distribution<double> damageDistribution(-cuttingV2Options_->damageErrorBound, cuttingV2Options_->damageErrorBound);
+        std::uniform_real_distribution<double> uniformDistribution(0.0f, 1.0f);
 
         float objHardnessLowerBound = cuttingV2Options_->trueObjectHardnessRange[0];
         float objHardnessUpperBound = cuttingV2Options_->trueObjectHardnessRange[1];
@@ -129,10 +171,9 @@ public :
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                float hardnessObservationValue = stateVec[i] + (FloatType) hardnessDistribution(generator);
-                // float hardnessObservationValue = stateVec[i];
+                float hardnessObservationValue = stateVec[i];
 
-                observationVec[i] = getLowOptimalHighValue(restrictWithinRange(hardnessObservationValue, 0.0, 1.0), objHardnessLowerBound, objHardnessUpperBound);
+                observationVec[i] = getStochasticLowOptimalHighValue(restrictWithinRange(hardnessObservationValue, 0.0, 1.0), objHardnessLowerBound, objHardnessUpperBound, (FloatType) uniformDistribution(generator), cuttingV2Options_->hardnessErrorBound);
             }
         }
         else if (actionVec[0] < 0.5){
@@ -145,11 +186,11 @@ public :
             //the first observation is for D, skip it
             for (int i = 1; i < observationVec.size(); i += 2){
                 // for each cutter (hardness, sharpness)
-                float sharpnessObservationValue = stateVec[i + 1] + (FloatType) sharpnessDistribution(generator);
+                float sharpnessObservationValue = stateVec[i + 1];
                 // float sharpnessObservationValue = stateVec[i + 1];
                 // debug::show_message(debug::to_string(hardnessObservationValue));
                 // debug::show_message(debug::to_string(sharpnessObservationValue));
-                observationVec[i+1] = getLowOptimalHighValue(restrictWithinRange(sharpnessObservationValue, 0.0, 1.0), objSharpnessLowerBound, objSharpnessUpperBound);
+                observationVec[i+1] = getStochasticLowOptimalHighValue(restrictWithinRange(sharpnessObservationValue, 0.0, 1.0), objSharpnessLowerBound, objSharpnessUpperBound, (FloatType) uniformDistribution(generator), cuttingV2Options_->sharpnessErrorBound);
             }
         } else{
             //cutter used
@@ -159,13 +200,13 @@ public :
             float trueCutterSharpness = stateVec[cutterIndex + 1];
 
             //apply uncertainty first then get mapping
-            float hardnessObservationValue = trueCutterHardness + (FloatType) hardnessDistribution(generator);
-            float sharpnessObservationValue = trueCutterSharpness + (FloatType) sharpnessDistribution(generator);
+            float hardnessObservationValue = trueCutterHardness;
+            float sharpnessObservationValue = trueCutterSharpness;
 
             // float hardnessObservationValue = trueCutterHardness;
             // float sharpnessObservationValue = trueCutterSharpness;
-            observationVec[cutterIndex] = getLowOptimalHighValue(restrictWithinRange(hardnessObservationValue, 0.0, 1.0), objHardnessLowerBound, objHardnessUpperBound);
-            observationVec[cutterIndex+1] = getLowOptimalHighValue(restrictWithinRange(sharpnessObservationValue, 0.0, 1.0), objSharpnessLowerBound, objSharpnessUpperBound);
+            observationVec[cutterIndex] = getStochasticLowOptimalHighValue(restrictWithinRange(hardnessObservationValue, 0.0, 1.0), objHardnessLowerBound, objHardnessUpperBound, (FloatType) uniformDistribution(generator), cuttingV2Options_->hardnessErrorBound);
+            observationVec[cutterIndex+1] = getStochasticLowOptimalHighValue(restrictWithinRange(sharpnessObservationValue, 0.0, 1.0), objSharpnessLowerBound, objSharpnessUpperBound, (FloatType) uniformDistribution(generator), cuttingV2Options_->hardnessErrorBound);
 
         }
         ObservationSharedPtr observation = std::make_shared<DiscreteVectorObservation>(observationVec);
