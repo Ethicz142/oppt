@@ -84,5 +84,5 @@ if __name__ == "__main__":
   # )
   # create_cfgs(orig_config, "/home/ethan/Honours/oppt/runstest")
   # generate_cutting_V2_cfg("/home/ethan/Honours/oppt/runs192/hi.cfg",3, 1, 1000, 5, 100)
-  run_experiments_original_algo(orig_config_constant_n, None, "/home/ethanNguyen/Honours/oppt/runsv1", 4)
+  run_experiments_original_algo(orig_config_constant_n, None, "/home/ethanNguyen/Honours/oppt/runsv1", 8)
 
