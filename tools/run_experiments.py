@@ -66,15 +66,23 @@ def run_experiments_original_algo(orig_config: Optional[ExpConfig], algo_config:
           p.starmap(run_solver, combinations)
 
 if __name__ == "__main__":
-  orig_config = ExpConfig(
-    n_list = [3,5],
-    s_list = [2],
-    a_list = [100],
+  # orig_config = ExpConfig(
+  #   n_list = [3,5],
+  #   s_list = [2],
+  #   a_list = [100],
+  #   t_list = [1000, 3000],
+  #   r = 5,
+  #   trials = 2
+  # )
+  run_for_a_config = ExpConfig(
+    n_list = [10],
+    s_list = [1],
+    a_list = [25, 50, 75],
     t_list = [1000, 3000],
-    r = 5,
-    trials = 2
+    r = 30,
+    trials = 3
   )
   # create_cfgs(orig_config, "/home/ethan/Honours/oppt/runstest")
   # generate_cutting_V2_cfg("/home/ethan/Honours/oppt/runs192/hi.cfg",3, 1, 1000, 5, 100)
-  run_experiments_original_algo(orig_config, None, "/home/ethan/Honours/oppt/runs192", 4)
+  run_experiments_original_algo(None, run_for_a_config, "/home/ethanNguyen/Honours/oppt/runsv1", 4)
 
