@@ -1,0 +1,80 @@
+import multiprocessing as mp
+import os.path as osp
+import pathlib
+import subprocess
+from dataclasses import dataclass
+from subprocess import PIPE, STDOUT
+from typing import List, Optional
+import itertools
+
+from generateCuttingV2CFG import generate_cutting_V2_cfg
+
+
+@dataclass
+class ExpConfig:
+  n_list: List[int]
+  s_list: List[int] 
+  a_list: List[int]
+  t_list: List[int]
+  r: int
+  trials: int
+
+def create_cfgs(config: ExpConfig, path):
+  for t in config.t_list:
+    for n in config.n_list:
+      for s in config.s_list:
+          for a in config.a_list:
+            for trial_num in range(1, config.trials + 1):
+              cfg_path = pathlib.Path(path, f"n-{n}_s-{s}_a-{a}_t-{t}")
+              cfg_path.mkdir(parents=True, exist_ok=True)
+              print(f"n-{n}_s-{s}_a-{a}_t-{t}")
+              print(cfg_path.parent.name)
+              generate_cutting_V2_cfg(cfg_path / f"{trial_num}.cfg", n, s, t, config.r, a, f"{cfg_path.parent.name}/{cfg_path.name}/{trial_num}")
+
+def run_solver(solver_path, cfg_path):
+  print (str(cfg_path).rsplit('.', 1)[0] + '.txt')
+  f = open(str(cfg_path).rsplit('.', 1)[0] + '.txt' , "w+")
+  subprocess.call(f"{solver_path} --cfg {cfg_path}", stdout=f, stderr=STDOUT, encoding='utf-8', shell=True)
+  # print (solver_path, cfg_path)
+
+def run_experiments_original_algo(orig_config: Optional[ExpConfig], algo_config: Optional[ExpConfig], path, num_processes):
+  def create_combinations(config: ExpConfig, solver_path, parent_path): 
+    combinations = [(solver_path, pathlib.Path(parent_path, f"n-{n}_s-{s}_a-{a}_t-{t}", f"{tn}.cfg")) for n, s, a, t, tn in
+      itertools.product(config.n_list, config.s_list, config.a_list, config.t_list, range(1, config.trials + 1))]
+    return combinations
+
+  original_path = None if orig_config is None else pathlib.Path(path, "original")
+  algo_path = None if algo_config is None else pathlib.Path(path, "algo")
+
+  combinations = []
+
+  if orig_config is not None:
+    create_cfgs(orig_config, original_path)
+    combinations.extend(create_combinations(orig_config, f"/home/{pathlib.Path(path).parts[2]}/Honours/ABTLiteOriginal/bin/abtLite", original_path))
+    print (pathlib.Path(path).parts)
+    
+    
+  if algo_config is not None: 
+    create_cfgs(algo_config, algo_path)
+    combinations.extend(create_combinations(algo_config, f"/home/{pathlib.Path(path).parts[2]}/Honours/ABTLite/bin/abtLite", algo_path))
+
+  if num_processes == 1:
+    for solver_path, cfg_path in combinations:
+      run_solver(solver_path, cfg_path)
+  else:
+      with mp.Pool(num_processes) as p:
+          p.starmap(run_solver, combinations)
+
+if __name__ == "__main__":
+  orig_config = ExpConfig(
+    n_list = [3,5],
+    s_list = [2],
+    a_list = [100],
+    t_list = [1000, 3000],
+    r = 5,
+    trials = 2
+  )
+  # create_cfgs(orig_config, "/home/ethan/Honours/oppt/runstest")
+  # generate_cutting_V2_cfg("/home/ethan/Honours/oppt/runs192/hi.cfg",3, 1, 1000, 5, 100)
+  run_experiments_original_algo(orig_config, None, "/home/ethan/Honours/oppt/runs192", 4)
+
