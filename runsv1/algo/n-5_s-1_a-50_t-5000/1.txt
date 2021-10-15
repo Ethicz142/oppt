@@ -1,0 +1,1901 @@
+Run # 1
+Initial state: 0 0.23141 0.129887 0.57103 0.817479 0.36606 0.726278 0.25088 0.338165 0.435028 0.596567 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 146515 episodes
+GETTING ACTION FROM:
+action 4, numVisits=146507, meanQ=8.409765, numObservations: 9
+action -1, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 0, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 0 0.23141 0.129887 0.57103 0.817479 0.36606 0.726278 0.25088 0.338165 0.435028 0.596567 w: 1
+Observation: 0 0 0 0 0 0 0 1 1 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 1, numVisits=16957, meanQ=9.613421, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 52301 episodes
+GETTING ACTION FROM:
+action 1, numVisits=69249, meanQ=9.665446, numObservations: 9
+action -1, numVisits=5, meanQ=-1.406000, numObservations: 5
+action 0, numVisits=5, meanQ=-1.406000, numObservations: 5
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=2, meanQ=-7.005000, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 0 0.23141 0.129887 0.57103 0.817479 0.36606 0.726278 0.25088 0.338165 0.435028 0.596567 w: 1
+Observation: 0 2 1 0 0 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 2
+Improving policy...
+PLANNING FROM:
+action 5, numVisits=932, meanQ=11.446693, numObservations: 9
+action -1, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 0, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 89103 episodes
+GETTING ACTION FROM:
+action 5, numVisits=90023, meanQ=9.502906, numObservations: 9
+action 0, numVisits=9, meanQ=-1.340000, numObservations: 9
+action -1, numVisits=8, meanQ=-1.505000, numObservations: 8
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=2, meanQ=-7.005000, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.23141 0.129887 0.57103 0.817479 0.36606 0.726278 0.25088 0.338165 0.435028 0.596567 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 2 2 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 15.5624
+Run # 2
+Initial state: 0 0.833491 0.746237 0.515231 0.00962865 0.795793 0.205401 0.333167 0.606064 0.584436 0.283108 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153014 episodes
+GETTING ACTION FROM:
+action 1, numVisits=153003, meanQ=8.490880, numObservations: 9
+action 2, numVisits=6, meanQ=2.351667, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.833491 0.746237 0.515231 0.00962865 0.795793 0.205401 0.333167 0.606064 0.584436 0.283108 w: 1
+Observation: 0 3 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 3
+Initial state: 0 0.488887 0.377071 0.521842 0.734957 0.612692 0.480745 0.20918 0.292213 0.436791 0.54497 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 144152 episodes
+GETTING ACTION FROM:
+action 2, numVisits=144125, meanQ=8.506969, numObservations: 9
+action 1, numVisits=13, meanQ=6.306923, numObservations: 6
+action 3, numVisits=8, meanQ=3.875000, numObservations: 5
+action 5, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 1 0.488887 0.377071 0.521842 0.734957 0.612692 0.480745 0.20918 0.292213 0.436791 0.54497 w: 1
+Observation: 0 0 0 3 3 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 4
+Initial state: 0 0.480715 0.302279 0.280814 0.839787 0.213748 0.830582 0.422852 0.872409 0.434945 0.559008 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153012 episodes
+GETTING ACTION FROM:
+action 5, numVisits=152987, meanQ=8.482280, numObservations: 9
+action 1, numVisits=18, meanQ=5.333333, numObservations: 8
+action 2, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.480715 0.302279 0.280814 0.839787 0.213748 0.830582 0.422852 0.872409 0.434945 0.559008 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 2 2 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 5
+Initial state: 0 0.5879 0.95952 0.340805 0.515466 0.816516 0.290141 0.158961 0.511636 0.125939 0.63634 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 149190 episodes
+GETTING ACTION FROM:
+action 1, numVisits=149179, meanQ=8.490149, numObservations: 9
+action 4, numVisits=4, meanQ=-0.500000, numObservations: 3
+action -1, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 0, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.5879 0.95952 0.340805 0.515466 0.816516 0.290141 0.158961 0.511636 0.125939 0.63634 w: 1
+Observation: 0 3 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 6
+Initial state: 0 0.42835 0.524385 0.477232 0.0213668 0.225601 0.378074 0.492318 0.984813 0.158072 0.153239 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 148586 episodes
+GETTING ACTION FROM:
+action 3, numVisits=148580, meanQ=8.545841, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 0 0.42835 0.524385 0.477232 0.0213668 0.225601 0.378074 0.492318 0.984813 0.158072 0.153239 w: 1
+Observation: 0 0 0 0 0 1 3 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 3, numVisits=10057, meanQ=11.231712, numObservations: 9
+action 4, numVisits=2, meanQ=6.500000, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 58616 episodes
+GETTING ACTION FROM:
+action 5, numVisits=58365, meanQ=12.401031, numObservations: 9
+action 3, numVisits=10059, meanQ=11.232391, numObservations: 9
+action 4, numVisits=56, meanQ=-6.207373, numObservations: 9
+action -1, numVisits=147, meanQ=-8.612687, numObservations: 83
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 0, numVisits=35, meanQ=-31.137573, numObservations: 27
+action 1, numVisits=17, meanQ=-49.757438, numObservations: 8
+action: 5
+Next state: 0 0.42835 0.524385 0.477232 0.0213668 0.225601 0.378074 0.492318 0.984813 0.158072 0.153239 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 1 1 
+Immediate reward: -4
+Updated belief
+
+t = 2
+Improving policy...
+PLANNING FROM:
+action 3, numVisits=1, meanQ=24.000000, numObservations: 1
+action 1, numVisits=4346, meanQ=13.455723, numObservations: 9
+action 5, numVisits=2, meanQ=-9.368618, numObservations: 2
+action 2, numVisits=1, meanQ=-9.531479, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action -1, numVisits=7, meanQ=-152.540776, numObservations: 6
+action 0, numVisits=5, meanQ=-213.161592, numObservations: 4
+Sampled 53468 episodes
+GETTING ACTION FROM:
+action 1, numVisits=57812, meanQ=13.871991, numObservations: 9
+action 3, numVisits=3, meanQ=3.000000, numObservations: 2
+action 5, numVisits=2, meanQ=-9.368618, numObservations: 2
+action 2, numVisits=1, meanQ=-9.531479, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action -1, numVisits=7, meanQ=-152.540776, numObservations: 6
+action 0, numVisits=5, meanQ=-213.161592, numObservations: 4
+action: 1
+Next state: 1 0.42835 0.524385 0.477232 0.0213668 0.225601 0.378074 0.492318 0.984813 0.158072 0.153239 w: 1
+Observation: 0 1 2 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 15.5624
+Run # 7
+Initial state: 0 0.628266 0.105572 0.947116 0.565935 0.0837871 0.799492 0.698511 0.67716 0.365085 0.584497 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153193 episodes
+GETTING ACTION FROM:
+action 2, numVisits=153150, meanQ=8.413252, numObservations: 9
+action 4, numVisits=22, meanQ=6.319100, numObservations: 8
+action 1, numVisits=17, meanQ=6.123529, numObservations: 6
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 2 0.628266 0.105572 0.947116 0.565935 0.0837871 0.799492 0.698511 0.67716 0.365085 0.584497 w: 1
+Observation: 0 0 0 3 2 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 8
+Initial state: 0 0.916782 0.226633 0.303325 0.932227 0.834678 0.306038 0.351052 0.512406 0.210669 0.00848081 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153052 episodes
+GETTING ACTION FROM:
+action 4, numVisits=153044, meanQ=8.284912, numObservations: 9
+action 5, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 1 0.916782 0.226633 0.303325 0.932227 0.834678 0.306038 0.351052 0.512406 0.210669 0.00848081 w: 1
+Observation: 0 0 0 0 0 0 0 2 2 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 9
+Initial state: 0 0.0385988 0.281668 0.41949 0.543007 0.742229 0.871731 0.356341 0.080097 0.674455 0.914185 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 147303 episodes
+GETTING ACTION FROM:
+action 5, numVisits=147286, meanQ=8.717242, numObservations: 9
+action 2, numVisits=12, meanQ=5.167508, numObservations: 6
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.0385988 0.281668 0.41949 0.543007 0.742229 0.871731 0.356341 0.080097 0.674455 0.914185 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 3 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 10
+Initial state: 0 0.24768 0.874003 0.923781 0.372842 0.737175 0.356528 0.674799 0.966247 0.381992 0.569854 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153354 episodes
+GETTING ACTION FROM:
+action 5, numVisits=153348, meanQ=8.377153, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.24768 0.874003 0.923781 0.372842 0.737175 0.356528 0.674799 0.966247 0.381992 0.569854 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 2 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 11
+Initial state: 0 0.516755 0.899287 0.391715 0.912544 0.530124 0.0058254 0.710796 0.691964 0.375318 0.559721 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 148881 episodes
+GETTING ACTION FROM:
+action 3, numVisits=148869, meanQ=8.476041, numObservations: 9
+action 1, numVisits=7, meanQ=0.585714, numObservations: 5
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 3
+Next state: 2 0.516755 0.899287 0.391715 0.912544 0.530124 0.0058254 0.710796 0.691964 0.375318 0.559721 w: 1
+Observation: 0 0 0 0 0 3 1 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 12
+Initial state: 0 0.910765 0.630358 0.406544 0.517874 0.428273 0.668144 0.739186 0.812765 0.518314 0.851599 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152364 episodes
+GETTING ACTION FROM:
+action 5, numVisits=152353, meanQ=8.294546, numObservations: 9
+action 4, numVisits=3, meanQ=3.330000, numObservations: 3
+action 2, numVisits=4, meanQ=1.250000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.910765 0.630358 0.406544 0.517874 0.428273 0.668144 0.739186 0.812765 0.518314 0.851599 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 3 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 13
+Initial state: 0 0.171048 0.799232 0.913534 0.390275 0.378269 0.562003 0.00484853 0.868117 0.00773759 0.0454566 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 145601 episodes
+GETTING ACTION FROM:
+action 3, numVisits=145543, meanQ=8.559459, numObservations: 9
+action 5, numVisits=51, meanQ=5.925696, numObservations: 8
+action 1, numVisits=3, meanQ=3.330000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 3
+Next state: 1 0.171048 0.799232 0.913534 0.390275 0.378269 0.562003 0.00484853 0.868117 0.00773759 0.0454566 w: 1
+Observation: 0 0 0 0 0 2 2 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 14
+Initial state: 0 0.383993 0.550617 0.99061 0.938152 0.692858 0.466325 0.842204 0.192091 0.0718606 0.43916 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152105 episodes
+GETTING ACTION FROM:
+action 1, numVisits=150595, meanQ=8.315505, numObservations: 9
+action 2, numVisits=1501, meanQ=7.986971, numObservations: 9
+action 3, numVisits=3, meanQ=3.330000, numObservations: 3
+action 4, numVisits=3, meanQ=3.330000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 1
+Next state: 1 0.383993 0.550617 0.99061 0.938152 0.692858 0.466325 0.842204 0.192091 0.0718606 0.43916 w: 1
+Observation: 0 2 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 15
+Initial state: 0 0.557091 0.450728 0.160561 0.608535 0.435904 0.598609 0.0262131 0.066437 0.423496 0.251092 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153314 episodes
+GETTING ACTION FROM:
+action 1, numVisits=153308, meanQ=8.287366, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 2 0.557091 0.450728 0.160561 0.608535 0.435904 0.598609 0.0262131 0.066437 0.423496 0.251092 w: 1
+Observation: 0 3 1 0 0 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 16
+Initial state: 0 0.63385 0.111585 0.661829 0.682039 0.419546 0.596872 0.491536 0.651 0.895961 0.995395 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153310 episodes
+GETTING ACTION FROM:
+action 2, numVisits=153304, meanQ=8.446086, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 1 0.63385 0.111585 0.661829 0.682039 0.419546 0.596872 0.491536 0.651 0.895961 0.995395 w: 1
+Observation: 0 0 0 3 3 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 17
+Initial state: 0 0.700625 0.900603 0.588192 0.717201 0.393111 0.561948 0.693943 0.152948 0.0896905 0.36389 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152090 episodes
+GETTING ACTION FROM:
+action 4, numVisits=148705, meanQ=8.346056, numObservations: 9
+action 1, numVisits=3359, meanQ=8.007410, numObservations: 9
+action 2, numVisits=22, meanQ=6.725000, numObservations: 8
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 2 0.700625 0.900603 0.588192 0.717201 0.393111 0.561948 0.693943 0.152948 0.0896905 0.36389 w: 1
+Observation: 0 0 0 0 0 0 0 1 3 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 18
+Initial state: 0 0.8309 0.187077 0.958041 0.325574 0.349128 0.572229 0.2683 0.36364 0.117998 0.757981 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 140486 episodes
+GETTING ACTION FROM:
+action 5, numVisits=140475, meanQ=8.851841, numObservations: 9
+action 4, numVisits=6, meanQ=1.185000, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 0 0.8309 0.187077 0.958041 0.325574 0.349128 0.572229 0.2683 0.36364 0.117998 0.757981 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 1 3 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 3, numVisits=9587, meanQ=9.648540, numObservations: 9
+action -1, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 0, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 2, numVisits=5, meanQ=-2.375980, numObservations: 3
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+Sampled 60221 episodes
+GETTING ACTION FROM:
+action 1, numVisits=60206, meanQ=11.310146, numObservations: 9
+action 3, numVisits=9597, meanQ=9.645565, numObservations: 9
+action -1, numVisits=5, meanQ=-1.208000, numObservations: 5
+action 0, numVisits=5, meanQ=-1.208000, numObservations: 5
+action 2, numVisits=5, meanQ=-2.375980, numObservations: 3
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+action: 1
+Next state: 2 0.8309 0.187077 0.958041 0.325574 0.349128 0.572229 0.2683 0.36364 0.117998 0.757981 w: 1
+Observation: 0 3 1 0 0 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -14.89
+Run # 19
+Initial state: 0 0.710276 0.324765 0.6037 0.176998 0.0817467 0.0615254 0.340493 0.593644 0.591805 0.929438 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 146925 episodes
+GETTING ACTION FROM:
+action 1, numVisits=146917, meanQ=8.509872, numObservations: 9
+action 5, numVisits=3, meanQ=1.703333, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 2 0.710276 0.324765 0.6037 0.176998 0.0817467 0.0615254 0.340493 0.593644 0.591805 0.929438 w: 1
+Observation: 0 1 1 0 0 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 20
+Initial state: 0 0.589021 0.89815 0.937316 0.792677 0.701293 0.688043 0.319388 0.643957 0.409319 0.552573 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152395 episodes
+GETTING ACTION FROM:
+action 3, numVisits=152379, meanQ=8.312457, numObservations: 9
+action 5, numVisits=7, meanQ=5.535714, numObservations: 5
+action 4, numVisits=5, meanQ=4.400000, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 1 0.589021 0.89815 0.937316 0.792677 0.701293 0.688043 0.319388 0.643957 0.409319 0.552573 w: 1
+Observation: 0 0 0 0 0 3 3 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 21
+Initial state: 0 0.602394 0.978649 0.173201 0.879305 0.678178 0.66168 0.928216 0.821027 0.410106 0.607086 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 154158 episodes
+GETTING ACTION FROM:
+action 2, numVisits=145291, meanQ=8.570796, numObservations: 9
+action 5, numVisits=6288, meanQ=8.486993, numObservations: 9
+action 3, numVisits=2562, meanQ=8.437204, numObservations: 9
+action 1, numVisits=14, meanQ=5.292857, numObservations: 8
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 0 0.602394 0.978649 0.173201 0.879305 0.678178 0.66168 0.928216 0.821027 0.410106 0.607086 w: 1
+Observation: 0 0 0 1 3 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 1, numVisits=9617, meanQ=9.781301, numObservations: 9
+action 4, numVisits=8, meanQ=7.498750, numObservations: 3
+action 3, numVisits=4, meanQ=6.500000, numObservations: 3
+action 2, numVisits=3, meanQ=5.993333, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 57405 episodes
+GETTING ACTION FROM:
+action 1, numVisits=66998, meanQ=10.680129, numObservations: 9
+action 3, numVisits=18, meanQ=6.557650, numObservations: 6
+action 4, numVisits=10, meanQ=4.499000, numObservations: 4
+action 2, numVisits=4, meanQ=3.495000, numObservations: 3
+action 0, numVisits=5, meanQ=-1.010000, numObservations: 5
+action -1, numVisits=4, meanQ=-1.257500, numObservations: 4
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.602394 0.978649 0.173201 0.879305 0.678178 0.66168 0.928216 0.821027 0.410106 0.607086 w: 1
+Observation: 0 3 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 19.76
+Run # 22
+Initial state: 0 0.430051 0.575487 0.513925 0.64834 0.644536 0.939111 0.673319 0.417416 0.885792 0.361381 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152693 episodes
+GETTING ACTION FROM:
+action 3, numVisits=152673, meanQ=8.439374, numObservations: 9
+action 4, numVisits=15, meanQ=3.966667, numObservations: 6
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 1 0.430051 0.575487 0.513925 0.64834 0.644536 0.939111 0.673319 0.417416 0.885792 0.361381 w: 1
+Observation: 0 0 0 0 0 3 3 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 23
+Initial state: 0 0.110023 0.00714092 0.781331 0.05695 0.618352 0.401401 0.380258 0.569532 0.75956 0.623231 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152804 episodes
+GETTING ACTION FROM:
+action 4, numVisits=152781, meanQ=8.390627, numObservations: 9
+action 3, numVisits=16, meanQ=6.561256, numObservations: 8
+action 1, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 1 0.110023 0.00714092 0.781331 0.05695 0.618352 0.401401 0.380258 0.569532 0.75956 0.623231 w: 1
+Observation: 0 0 0 0 0 0 0 2 2 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 24
+Initial state: 0 0.357665 0.541398 0.880266 0.0867092 0.723268 0.138734 0.0780131 0.614645 0.449407 0.141466 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 148023 episodes
+GETTING ACTION FROM:
+action 3, numVisits=147986, meanQ=8.521120, numObservations: 9
+action 4, numVisits=32, meanQ=6.874388, numObservations: 7
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 2 0.357665 0.541398 0.880266 0.0867092 0.723268 0.138734 0.0780131 0.614645 0.449407 0.141466 w: 1
+Observation: 0 0 0 0 0 3 1 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 25
+Initial state: 0 0.0393136 0.266043 0.254359 0.327091 0.755722 0.405428 0.390141 0.571422 0.468024 0.888883 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152639 episodes
+GETTING ACTION FROM:
+action 5, numVisits=152625, meanQ=8.472714, numObservations: 9
+action 3, numVisits=9, meanQ=3.997778, numObservations: 6
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.0393136 0.266043 0.254359 0.327091 0.755722 0.405428 0.390141 0.571422 0.468024 0.888883 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 3 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 26
+Initial state: 0 0.572098 0.444622 0.542436 0.507624 0.816782 0.133533 0.38305 0.574463 0.785995 0.719059 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 149581 episodes
+GETTING ACTION FROM:
+action 3, numVisits=129743, meanQ=8.283453, numObservations: 9
+action 2, numVisits=19831, meanQ=8.137241, numObservations: 9
+action 4, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 3
+Next state: 2 0.572098 0.444622 0.542436 0.507624 0.816782 0.133533 0.38305 0.574463 0.785995 0.719059 w: 1
+Observation: 0 0 0 0 0 3 1 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 27
+Initial state: 0 0.818801 0.0554596 0.108992 0.215414 0.474022 0.80931 0.3792 0.55025 0.975239 0.855265 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 148751 episodes
+GETTING ACTION FROM:
+action 4, numVisits=148735, meanQ=8.522067, numObservations: 9
+action 3, numVisits=9, meanQ=5.755578, numObservations: 4
+action 2, numVisits=3, meanQ=3.330000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 1 0.818801 0.0554596 0.108992 0.215414 0.474022 0.80931 0.3792 0.55025 0.975239 0.855265 w: 1
+Observation: 0 0 0 0 0 0 0 2 2 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 28
+Initial state: 0 0.181812 0.283521 0.383654 0.606677 0.727413 0.54358 0.752382 0.775981 0.0092309 0.99857 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 150778 episodes
+GETTING ACTION FROM:
+action 1, numVisits=150772, meanQ=8.486538, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 0 0.181812 0.283521 0.383654 0.606677 0.727413 0.54358 0.752382 0.775981 0.0092309 0.99857 w: 1
+Observation: 0 1 2 0 0 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 2, numVisits=2701, meanQ=8.350935, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 57821 episodes
+GETTING ACTION FROM:
+action 5, numVisits=6351, meanQ=9.401106, numObservations: 9
+action 2, numVisits=53979, meanQ=9.037144, numObservations: 9
+action 0, numVisits=129, meanQ=-1.521909, numObservations: 101
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action -1, numVisits=66, meanQ=-17.123354, numObservations: 54
+action: 5
+Next state: 0 0.181812 0.283521 0.383654 0.606677 0.727413 0.54358 0.752382 0.775981 0.0092309 0.99857 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 1 3 
+Immediate reward: -4
+Updated belief
+
+t = 2
+Improving policy...
+PLANNING FROM:
+action 4, numVisits=147, meanQ=11.111029, numObservations: 9
+action 5, numVisits=1, meanQ=-13.699250, numObservations: 1
+action 3, numVisits=1, meanQ=-16.046409, numObservations: 1
+action -1, numVisits=41, meanQ=-24.468767, numObservations: 24
+action 2, numVisits=27, meanQ=-32.979248, numObservations: 9
+action 0, numVisits=7, meanQ=-150.135843, numObservations: 6
+action 1, numVisits=1, meanQ=-1048.356644, numObservations: 1
+Sampled 70098 episodes
+GETTING ACTION FROM:
+action 4, numVisits=70245, meanQ=11.150114, numObservations: 9
+action 5, numVisits=1, meanQ=-13.699250, numObservations: 1
+action 3, numVisits=1, meanQ=-16.046409, numObservations: 1
+action -1, numVisits=41, meanQ=-24.468767, numObservations: 24
+action 2, numVisits=27, meanQ=-32.979248, numObservations: 9
+action 0, numVisits=7, meanQ=-150.135843, numObservations: 6
+action 1, numVisits=1, meanQ=-1048.356644, numObservations: 1
+action: 4
+Next state: 1 0.181812 0.283521 0.383654 0.606677 0.727413 0.54358 0.752382 0.775981 0.0092309 0.99857 w: 1
+Observation: 0 0 0 0 0 0 0 3 3 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 15.5624
+Run # 29
+Initial state: 0 0.340224 0.110568 0.412405 0.522217 0.794587 0.439231 0.46718 0.339011 0.465612 0.612698 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 142098 episodes
+GETTING ACTION FROM:
+action 1, numVisits=142089, meanQ=7.835542, numObservations: 9
+action 4, numVisits=4, meanQ=1.250000, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 2 0.340224 0.110568 0.412405 0.522217 0.794587 0.439231 0.46718 0.339011 0.465612 0.612698 w: 1
+Observation: 0 2 1 0 0 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 30
+Initial state: 0 0.60663 0.260594 0.486474 0.034951 0.400496 0.630238 0.243783 0.708558 0.424537 0.589164 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 151983 episodes
+GETTING ACTION FROM:
+action 3, numVisits=151975, meanQ=8.439822, numObservations: 9
+action 1, numVisits=3, meanQ=3.000000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 2 0.60663 0.260594 0.486474 0.034951 0.400496 0.630238 0.243783 0.708558 0.424537 0.589164 w: 1
+Observation: 0 0 0 0 0 2 3 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 31
+Initial state: 0 0.864413 0.139661 0.485153 0.506476 0.624465 0.038594 0.382961 0.591445 0.271426 0.0616194 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152997 episodes
+GETTING ACTION FROM:
+action 2, numVisits=152984, meanQ=8.497313, numObservations: 9
+action 3, numVisits=8, meanQ=4.873750, numObservations: 5
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 2 0.864413 0.139661 0.485153 0.506476 0.624465 0.038594 0.382961 0.591445 0.271426 0.0616194 w: 1
+Observation: 0 0 0 3 1 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 32
+Initial state: 0 0.756074 0.421537 0.357054 0.583545 0.307832 0.918627 0.824874 0.782059 0.451279 0.448247 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152088 episodes
+GETTING ACTION FROM:
+action 5, numVisits=152082, meanQ=8.395697, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 2 0.756074 0.421537 0.357054 0.583545 0.307832 0.918627 0.824874 0.782059 0.451279 0.448247 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 1 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 33
+Initial state: 0 0.724683 0.638901 0.531565 0.300241 0.435099 0.266568 0.409609 0.548584 0.779765 0.153899 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153176 episodes
+GETTING ACTION FROM:
+action 1, numVisits=153161, meanQ=8.462569, numObservations: 9
+action 3, numVisits=8, meanQ=3.875000, numObservations: 7
+action 2, numVisits=3, meanQ=3.000000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.724683 0.638901 0.531565 0.300241 0.435099 0.266568 0.409609 0.548584 0.779765 0.153899 w: 1
+Observation: 0 3 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 34
+Initial state: 0 0.17416 0.784604 0.407126 0.582909 0.417969 0.697837 0.497187 0.454625 0.217567 0.49169 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153652 episodes
+GETTING ACTION FROM:
+action 2, numVisits=153597, meanQ=8.420838, numObservations: 9
+action 4, numVisits=29, meanQ=6.483114, numObservations: 8
+action 5, numVisits=18, meanQ=6.276111, numObservations: 9
+action 3, numVisits=5, meanQ=4.598000, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 2
+Next state: 0 0.17416 0.784604 0.407126 0.582909 0.417969 0.697837 0.497187 0.454625 0.217567 0.49169 w: 1
+Observation: 0 0 0 2 2 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 2, numVisits=2466, meanQ=19.447528, numObservations: 9
+action 1, numVisits=2, meanQ=6.500000, numObservations: 2
+action 4, numVisits=2, meanQ=6.500000, numObservations: 1
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 141481 episodes
+GETTING ACTION FROM:
+action 2, numVisits=2471, meanQ=19.452234, numObservations: 9
+action 5, numVisits=141465, meanQ=10.117929, numObservations: 9
+action 4, numVisits=5, meanQ=3.000000, numObservations: 2
+action 1, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=5, meanQ=-1.604000, numObservations: 5
+action 0, numVisits=5, meanQ=-1.802000, numObservations: 4
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 1 0.17416 0.784604 0.407126 0.582909 0.417969 0.697837 0.497187 0.454625 0.217567 0.49169 w: 1
+Observation: 0 0 0 2 2 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 19.76
+Run # 35
+Initial state: 0 0.214148 0.333654 0.67435 0.85905 0.349172 0.59218 0.320948 0.992604 0.987073 0.385205 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153053 episodes
+GETTING ACTION FROM:
+action 1, numVisits=153047, meanQ=8.491114, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 0 0.214148 0.333654 0.67435 0.85905 0.349172 0.59218 0.320948 0.992604 0.987073 0.385205 w: 1
+Observation: 0 1 1 0 0 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 3, numVisits=17400, meanQ=9.710564, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 44770 episodes
+GETTING ACTION FROM:
+action 3, numVisits=62137, meanQ=8.223879, numObservations: 9
+action -1, numVisits=11, meanQ=-2.450000, numObservations: 10
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=2, meanQ=-7.005000, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 0, numVisits=23, meanQ=-47.255735, numObservations: 20
+action: 3
+Next state: 1 0.214148 0.333654 0.67435 0.85905 0.349172 0.59218 0.320948 0.992604 0.987073 0.385205 w: 1
+Observation: 0 0 0 0 0 2 2 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 19.76
+Run # 36
+Initial state: 0 0.21712 0.899404 0.665729 0.111735 0.430193 0.567164 0.901041 0.908203 0.0718315 0.334884 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152324 episodes
+GETTING ACTION FROM:
+action 3, numVisits=152313, meanQ=8.453369, numObservations: 9
+action 2, numVisits=6, meanQ=1.833333, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 1 0.21712 0.899404 0.665729 0.111735 0.430193 0.567164 0.901041 0.908203 0.0718315 0.334884 w: 1
+Observation: 0 0 0 0 0 2 2 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 37
+Initial state: 0 0.505031 0.808478 0.243244 0.396773 0.409727 0.588585 0.756102 0.806719 0.467357 0.153351 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153077 episodes
+GETTING ACTION FROM:
+action 3, numVisits=153052, meanQ=8.394477, numObservations: 9
+action 5, numVisits=10, meanQ=0.900000, numObservations: 4
+action 2, numVisits=8, meanQ=-0.500000, numObservations: 7
+action -1, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 0, numVisits=2, meanQ=-1.010000, numObservations: 2
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=2, meanQ=-7.500000, numObservations: 2
+action: 3
+Next state: 0 0.505031 0.808478 0.243244 0.396773 0.409727 0.588585 0.756102 0.806719 0.467357 0.153351 w: 1
+Observation: 0 0 0 0 0 2 3 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 4, numVisits=1214, meanQ=8.050219, numObservations: 9
+action 1, numVisits=3, meanQ=0.666667, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 94991 episodes
+GETTING ACTION FROM:
+action 4, numVisits=96196, meanQ=12.401088, numObservations: 9
+action 1, numVisits=3, meanQ=0.666667, numObservations: 3
+action 0, numVisits=6, meanQ=-1.505000, numObservations: 6
+action -1, numVisits=5, meanQ=-1.802000, numObservations: 5
+action 2, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 1 0.505031 0.808478 0.243244 0.396773 0.409727 0.588585 0.756102 0.806719 0.467357 0.153351 w: 1
+Observation: 0 0 0 0 0 0 0 3 3 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 19.76
+Run # 38
+Initial state: 0 0.351437 0.537221 0.548314 0.0549117 0.518393 0.479826 0.779432 0.35031 0.667869 0.801903 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153114 episodes
+GETTING ACTION FROM:
+action 2, numVisits=692, meanQ=10.374430, numObservations: 9
+action 1, numVisits=149060, meanQ=8.532729, numObservations: 9
+action 3, numVisits=3347, meanQ=8.246173, numObservations: 9
+action 4, numVisits=10, meanQ=5.799010, numObservations: 6
+action 5, numVisits=3, meanQ=0.666667, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action: 2
+Next state: 2 0.351437 0.537221 0.548314 0.0549117 0.518393 0.479826 0.779432 0.35031 0.667869 0.801903 w: 1
+Observation: 0 0 0 3 1 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 39
+Initial state: 0 0.889317 0.0119009 0.877513 0.980011 0.270521 0.600833 0.434105 0.560087 0.28989 0.772274 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 147616 episodes
+GETTING ACTION FROM:
+action 5, numVisits=147610, meanQ=8.595101, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 0 0.889317 0.0119009 0.877513 0.980011 0.270521 0.600833 0.434105 0.560087 0.28989 0.772274 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 2 3 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 5, numVisits=1219, meanQ=12.928060, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 95431 episodes
+GETTING ACTION FROM:
+action 5, numVisits=1221, meanQ=12.931441, numObservations: 9
+action 2, numVisits=95348, meanQ=12.243852, numObservations: 9
+action 0, numVisits=43, meanQ=-1.838837, numObservations: 36
+action -1, numVisits=40, meanQ=-1.876250, numObservations: 34
+action 1, numVisits=2, meanQ=-7.005000, numObservations: 2
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.889317 0.0119009 0.877513 0.980011 0.270521 0.600833 0.434105 0.560087 0.28989 0.772274 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 1 3 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 19.76
+Run # 40
+Initial state: 0 0.777105 0.938572 0.285458 0.178243 0.400548 0.157241 0.416601 0.537285 0.397152 0.944157 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 147260 episodes
+GETTING ACTION FROM:
+action 1, numVisits=147219, meanQ=8.555894, numObservations: 9
+action 0, numVisits=17, meanQ=-1.127053, numObservations: 16
+action -1, numVisits=15, meanQ=-1.142660, numObservations: 14
+action 5, numVisits=6, meanQ=-2.811650, numObservations: 4
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.777105 0.938572 0.285458 0.178243 0.400548 0.157241 0.416601 0.537285 0.397152 0.944157 w: 1
+Observation: 0 3 1 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 41
+Initial state: 0 0.844323 0.736945 0.448921 0.0146462 0.14454 0.347393 0.340734 0.565524 0.502035 0.990296 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153089 episodes
+GETTING ACTION FROM:
+action 5, numVisits=153075, meanQ=8.485308, numObservations: 9
+action 4, numVisits=9, meanQ=5.333333, numObservations: 5
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 1 0.844323 0.736945 0.448921 0.0146462 0.14454 0.347393 0.340734 0.565524 0.502035 0.990296 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 3 3 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 42
+Initial state: 0 0.236359 0.849167 0.352185 0.540137 0.794653 0.329743 0.231289 0.792349 0.032368 0.971825 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 150469 episodes
+GETTING ACTION FROM:
+action 2, numVisits=150447, meanQ=8.414316, numObservations: 9
+action 1, numVisits=10, meanQ=5.997010, numObservations: 5
+action 3, numVisits=6, meanQ=4.331667, numObservations: 5
+action 4, numVisits=3, meanQ=3.000000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 0 0.236359 0.849167 0.352185 0.540137 0.794653 0.329743 0.231289 0.792349 0.032368 0.971825 w: 1
+Observation: 0 0 0 2 2 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=2459, meanQ=15.266050, numObservations: 199
+action 0, numVisits=39, meanQ=-1.087677, numObservations: 31
+action 1, numVisits=5, meanQ=-3.180000, numObservations: 4
+action 4, numVisits=3, meanQ=-5.673333, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 68010 episodes
+GETTING ACTION FROM:
+action -1, numVisits=70469, meanQ=1.031459, numObservations: 243
+action 0, numVisits=39, meanQ=-1.087677, numObservations: 31
+action 1, numVisits=5, meanQ=-3.180000, numObservations: 4
+action 4, numVisits=3, meanQ=-5.673333, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: -1
+Next state: 0 0.236359 0.849167 0.352185 0.540137 0.794653 0.329743 0.231289 0.792349 0.032368 0.971825 w: 1
+Observation: 0 2 0 2 0 3 0 1 0 1 0 
+Immediate reward: -2
+Updated belief
+
+t = 2
+Improving policy...
+PLANNING FROM:
+action 2, numVisits=2, meanQ=24.000000, numObservations: 1
+action -1, numVisits=57, meanQ=11.254826, numObservations: 20
+action 0, numVisits=5, meanQ=-1.010000, numObservations: 5
+action 4, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=5, meanQ=-204.959963, numObservations: 3
+Sampled 95125 episodes
+GETTING ACTION FROM:
+action 2, numVisits=9, meanQ=20.111111, numObservations: 3
+action -1, numVisits=95165, meanQ=0.646971, numObservations: 236
+action 0, numVisits=14, meanQ=-2.402350, numObservations: 11
+action 4, numVisits=2, meanQ=-6.866998, numObservations: 2
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=5, meanQ=-204.959963, numObservations: 3
+action: 2
+Next state: 1 0.236359 0.849167 0.352185 0.540137 0.794653 0.329743 0.231289 0.792349 0.032368 0.971825 w: 1
+Observation: 0 0 0 2 2 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 17.5424
+Run # 43
+Initial state: 0 0.767705 0.905289 0.317419 0.258185 0.424107 0.580004 0.261178 0.148513 0.566772 0.224297 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 149821 episodes
+GETTING ACTION FROM:
+action 1, numVisits=149801, meanQ=8.636328, numObservations: 9
+action 3, numVisits=11, meanQ=5.453655, numObservations: 7
+action 2, numVisits=5, meanQ=4.598000, numObservations: 4
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 1
+Next state: 1 0.767705 0.905289 0.317419 0.258185 0.424107 0.580004 0.261178 0.148513 0.566772 0.224297 w: 1
+Observation: 0 3 3 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 44
+Initial state: 0 0.71838 0.65142 0.850899 0.290515 0.402324 0.537212 0.253062 0.0430742 0.362209 0.374657 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152140 episodes
+GETTING ACTION FROM:
+action 3, numVisits=152081, meanQ=8.422983, numObservations: 9
+action 4, numVisits=47, meanQ=7.154477, numObservations: 8
+action 2, numVisits=8, meanQ=4.122500, numObservations: 5
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 1 0.71838 0.65142 0.850899 0.290515 0.402324 0.537212 0.253062 0.0430742 0.362209 0.374657 w: 1
+Observation: 0 0 0 0 0 2 2 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 45
+Initial state: 0 0.937767 0.917032 0.155607 0.229713 0.661416 0.00559411 0.427197 0.566514 0.753131 0.0429496 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152852 episodes
+GETTING ACTION FROM:
+action 4, numVisits=152844, meanQ=8.495473, numObservations: 9
+action 5, numVisits=3, meanQ=0.666667, numObservations: 2
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action: 4
+Next state: 1 0.937767 0.917032 0.155607 0.229713 0.661416 0.00559411 0.427197 0.566514 0.753131 0.0429496 w: 1
+Observation: 0 0 0 0 0 0 0 2 3 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 46
+Initial state: 0 0.538591 0.808359 0.625297 0.494822 0.976597 0.733369 0.395615 0.591401 0.774786 0.200135 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152584 episodes
+GETTING ACTION FROM:
+action 4, numVisits=152572, meanQ=8.387565, numObservations: 9
+action -1, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 0, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 1, numVisits=2, meanQ=-7.500000, numObservations: 2
+action 3, numVisits=2, meanQ=-7.500000, numObservations: 2
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 4
+Next state: 1 0.538591 0.808359 0.625297 0.494822 0.976597 0.733369 0.395615 0.591401 0.774786 0.200135 w: 1
+Observation: 0 0 0 0 0 0 0 2 2 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 47
+Initial state: 0 0.302871 0.202586 0.994976 0.499418 0.393916 0.611941 0.883424 0.390879 0.13657 0.898777 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152369 episodes
+GETTING ACTION FROM:
+action 3, numVisits=152361, meanQ=8.424573, numObservations: 9
+action 4, numVisits=3, meanQ=3.000000, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 3
+Next state: 1 0.302871 0.202586 0.994976 0.499418 0.393916 0.611941 0.883424 0.390879 0.13657 0.898777 w: 1
+Observation: 0 0 0 0 0 2 2 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+Run # 48
+Initial state: 0 0.238339 0.00166244 0.0772419 0.665432 0.483909 0.388096 0.39823 0.551403 0.245964 0.911796 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 148603 episodes
+GETTING ACTION FROM:
+action 2, numVisits=148589, meanQ=8.434713, numObservations: 9
+action -1, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 0, numVisits=3, meanQ=-1.010000, numObservations: 3
+action 3, numVisits=5, meanQ=-1.200000, numObservations: 5
+action 4, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 0 0.238339 0.00166244 0.0772419 0.665432 0.483909 0.388096 0.39823 0.551403 0.245964 0.911796 w: 1
+Observation: 0 0 0 3 3 0 0 0 0 0 0 
+Immediate reward: -4
+Updated belief
+
+t = 1
+Improving policy...
+PLANNING FROM:
+action 5, numVisits=717, meanQ=9.371842, numObservations: 9
+action 3, numVisits=49, meanQ=6.142871, numObservations: 9
+action 2, numVisits=6, meanQ=4.661667, numObservations: 5
+action 1, numVisits=3, meanQ=0.666667, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+Sampled 189213 episodes
+GETTING ACTION FROM:
+action 5, numVisits=189925, meanQ=12.160242, numObservations: 9
+action 3, numVisits=49, meanQ=6.142871, numObservations: 9
+action 2, numVisits=6, meanQ=4.661667, numObservations: 5
+action 1, numVisits=3, meanQ=0.666667, numObservations: 3
+action 0, numVisits=4, meanQ=-1.505000, numObservations: 4
+action -1, numVisits=3, meanQ=-1.670000, numObservations: 3
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 5
+Next state: 0 0.238339 0.00166244 0.0772419 0.665432 0.483909 0.388096 0.39823 0.551403 0.245964 0.911796 w: 1
+Observation: 0 0 0 0 0 0 0 0 0 1 3 
+Immediate reward: -4
+Updated belief
+
+t = 2
+Improving policy...
+PLANNING FROM:
+action 4, numVisits=245, meanQ=8.999190, numObservations: 9
+action 5, numVisits=148, meanQ=7.513999, numObservations: 7
+action -1, numVisits=6, meanQ=-1.010000, numObservations: 6
+action 0, numVisits=6, meanQ=-1.010000, numObservations: 6
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-3.010000, numObservations: 1
+Sampled 159193 episodes
+GETTING ACTION FROM:
+action 4, numVisits=159438, meanQ=15.598989, numObservations: 9
+action 5, numVisits=148, meanQ=7.513999, numObservations: 7
+action -1, numVisits=6, meanQ=-1.010000, numObservations: 6
+action 0, numVisits=6, meanQ=-1.010000, numObservations: 6
+action 1, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 2, numVisits=1, meanQ=-3.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-3.010000, numObservations: 1
+action: 4
+Next state: 1 0.238339 0.00166244 0.0772419 0.665432 0.483909 0.388096 0.39823 0.551403 0.245964 0.911796 w: 1
+Observation: 0 0 0 0 0 0 0 2 2 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 15.5624
+Run # 49
+Initial state: 0 0.0400198 0.0221512 0.535129 0.790972 0.428194 0.605818 0.266255 0.56028 0.811609 0.661751 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 153439 episodes
+GETTING ACTION FROM:
+action 2, numVisits=153430, meanQ=8.441167, numObservations: 9
+action 3, numVisits=4, meanQ=2.750025, numObservations: 3
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 1, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 2
+Next state: 2 0.0400198 0.0221512 0.535129 0.790972 0.428194 0.605818 0.266255 0.56028 0.811609 0.661751 w: 1
+Observation: 0 0 0 3 3 0 0 0 0 0 0 
+Immediate reward: -11
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: -11
+Run # 50
+Initial state: 0 0.336962 0.577989 0.149568 0.111226 0.114398 0.858524 0.516504 0.772727 0.302842 0.967728 w: 1
+
+t = 0
+Improving policy...
+PLANNING FROM:
+action -1, numVisits=0, meanQ=-inf, numObservations: 0
+action 0, numVisits=0, meanQ=-inf, numObservations: 0
+action 1, numVisits=0, meanQ=-inf, numObservations: 0
+action 2, numVisits=0, meanQ=-inf, numObservations: 0
+action 3, numVisits=0, meanQ=-inf, numObservations: 0
+action 4, numVisits=0, meanQ=-inf, numObservations: 0
+action 5, numVisits=0, meanQ=-inf, numObservations: 0
+Sampled 152749 episodes
+GETTING ACTION FROM:
+action 1, numVisits=152743, meanQ=8.352287, numObservations: 9
+action -1, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 0, numVisits=1, meanQ=-1.010000, numObservations: 1
+action 3, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 5, numVisits=1, meanQ=-4.000000, numObservations: 1
+action 2, numVisits=1, meanQ=-11.000000, numObservations: 1
+action 4, numVisits=1, meanQ=-11.000000, numObservations: 1
+action: 1
+Next state: 1 0.336962 0.577989 0.149568 0.111226 0.114398 0.858524 0.516504 0.772727 0.302842 0.967728 w: 1
+Observation: 0 1 2 0 0 0 0 0 0 0 0 
+Immediate reward: 24
+Terminal state reached!
+Updated belief
+Run finished 
+Discounted reward: 24
+[32m ProblemEnvironment.hpp 351: Done.[39m
