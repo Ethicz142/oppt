@@ -114,6 +114,22 @@ if __name__ == "__main__":
     r = 50,
     trials = 20
   )
+  orig_config_large_constant_s = ExpConfig(
+    n_list = [60,70,80,90,100],
+    s_list = [1],
+    a_list = [100],
+    t_list = [1000, 3000],
+    r = 50,
+    trials = 20
+  )
+  algo_config_large_constant_s = ExpConfig(
+    n_list = [60,70,80,90,100],
+    s_list = [1],
+    a_list = [50],
+    t_list = [1000, 3000],
+    r = 50,
+    trials = 20
+  )
   # run_for_a_config = ExpConfig(
   #   n_list = [10],
   #   s_list = [1],
@@ -124,5 +140,5 @@ if __name__ == "__main__":
   # )
   # create_cfgs(orig_config, "/home/ethan/Honours/oppt/runstest")
   # generate_cutting_V2_cfg("/home/ethan/Honours/oppt/runs192/hi.cfg",3, 1, 1000, 5, 100)
-  run_experiments_original_algo(orig_config_50_1, algo_config_50_1, "/home/ethanNguyen/Honours/oppt/runsv1", 8)
+  run_experiments_original_algo(orig_config_large_constant_s, algo_config_large_constant_s, "/home/ethanNguyen/Honours/oppt/runsv1", 8)
 
