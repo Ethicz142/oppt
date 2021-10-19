@@ -64,31 +64,19 @@ public:
         //the object is uncut (0), hence why we start at i = 1
         //random sharpness & hardness for the cutters, we don't know what they are until we scan
         for (int i = 1; i < numberOfStates; i += 2){
-            //are we going to enforce the hardness or sharpness property to be unsuitable
-            // as we only need either one to be out of range to ensure it is not a suitable cutter
-            float enforceHardnessOrSharpnessToBeUnsuitable = (FloatType) distribution(generator);
-            //enforce hardness
-            if (enforceHardnessOrSharpnessToBeUnsuitable <= 0.5) {
-                float unsuitableHardnessValue = (FloatType) unsuitableHardnessDistribution(generator);
-                if (unsuitableHardnessValue >= objHardnessLowerBound){
-                    //push it past the optimal range
-                    unsuitableHardnessValue += objHardnessOptimalRange;
-                }
-                initialStateVec[i] = unsuitableHardnessValue;
-                initialStateVec[i + 1] =  (FloatType) distribution(generator);
-
-            //enforce sharpness
-            } else {
-                float unsuitableSharpnessValue = (FloatType) unsuitableSharpnessDistribution(generator);
-                if (unsuitableSharpnessValue >= objSharpnessLowerBound){
-                    //push it past the optimal range
-                    unsuitableSharpnessValue += objSharpnessOptimalRange;
-                }
-                initialStateVec[i] = (FloatType) distribution(generator);
-                initialStateVec[i + 1] =  unsuitableSharpnessValue;
+            //rejection sampling to sample outside of the optimal-optimal range
+            while (true){
+                FloatType hardnessValue = (FloatType) distribution(generator);
+                FloatType sharpnessValue = (FloatType) distribution(generator);
+                
+                bool isInOptimalOptimalRange = hardnessValue >= objHardnessLowerBound && hardnessValue <= objHardnessUpperBound && sharpnessValue >= objSharpnessLowerBound && sharpnessValue <= objSharpnessUpperBound;
+                if (!isInOptimalOptimalRange) {
+                    initialStateVec[i] = hardnessValue;
+                    initialStateVec[i + 1] = sharpnessValue;
+                    break;
+                } 
             }
         }
-
 
         std::uniform_real_distribution<double> suitableHardnessDistribution(objHardnessLowerBound, objHardnessUpperBound);
         std::uniform_real_distribution<double> suitableSharpnessDistribution(objSharpnessLowerBound, objSharpnessUpperBound);

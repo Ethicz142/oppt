@@ -1,6 +1,15 @@
 import random, getopt, sys
 from pathlib import Path
 
+def newGenerateRanges():
+  bound = round(random.uniform(0, 0.25), 3)
+  if random.choice([0, 1]) == 0:
+      bound += 0.25
+      return round(bound, 3), round(bound + random.uniform(0.1, 0.2), 3)
+  else:
+      bound = 0.75 - bound
+      return round(bound - random.uniform(0.1, 0.2), 3), round(bound, 3)
+
 def generate_cutting_V2_cfg(output_path, n, s, t, r, a=100, log_path=None):
   with open('modelCuttingV2.cfg', 'r') as reader:
     lines = reader.readlines()
@@ -19,12 +28,10 @@ def generate_cutting_V2_cfg(output_path, n, s, t, r, a=100, log_path=None):
         modified_line = f'numberOfSuitableCutters = {s}\n'
 
       elif 'trueObjectHardnessRange' in line:
-        lower_bound = round(random.uniform(0.25, 0.55), 3)
-        upper_bound = round(lower_bound + random.uniform(0.1, 0.2), 3)
+        lower_bound, upper_bound = newGenerateRanges()
         modified_line = f'trueObjectHardnessRange = [{lower_bound}, {upper_bound}]\n'
       elif 'trueObjectSharpnessRange' in line:
-        lower_bound = round(random.uniform(0.25, 0.55), 3)
-        upper_bound = round(lower_bound + random.uniform(0.1, 0.2), 3)
+        lower_bound, upper_bound = newGenerateRanges()
         modified_line = f'trueObjectSharpnessRange = [{lower_bound}, {upper_bound}]\n'
 
 
