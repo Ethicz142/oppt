@@ -66,6 +66,14 @@ def run_experiments_original_algo(orig_config: Optional[ExpConfig], algo_config:
           p.starmap(run_solver, combinations)
 
 if __name__ == "__main__":
+  run_for_a_config = ExpConfig(
+    n_list = [10],
+    s_list = [1],
+    a_list = [25, 50, 75],
+    t_list = [1000, 3000],
+    r = 30,
+    trials = 3
+  )
   orig_config_constant_n = ExpConfig(
     n_list = [20],
     s_list = [7,5,3,1],
@@ -146,5 +154,5 @@ if __name__ == "__main__":
     r = 50,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_20_50_1, algo_config_20_50_1, "/home/ethanNguyen/Honours/oppt/runsv2", 8)
+  run_experiments_original_algo(None, run_for_a_config, "/home/ethanNguyen/Honours/oppt/runsv2", 8)
 
