@@ -154,5 +154,6 @@ if __name__ == "__main__":
     r = 50,
     trials = 20
   )
-  run_experiments_original_algo(None, run_for_a_config, "/home/ethanNguyen/Honours/oppt/runsv2", 8)
+  run_experiments_original_algo(orig_config_20_50_1, algo_config_20_50_1, "/home/ethanNguyen/Honours/oppt/runsv3", 8)
+  print('experiments are completed.')
 
