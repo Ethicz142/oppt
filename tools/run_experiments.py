@@ -78,7 +78,7 @@ if __name__ == "__main__":
     n_list = [20],
     s_list = [7,5,3,1],
     a_list = [100],
-    t_list = [1000, 3000, 5000],
+    t_list = [1000, 3000],
     r = 50,
     trials = 20
   )
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     n_list = [5, 10, 15],
     s_list = [1],
     a_list = [100],
-    t_list = [1000, 3000, 5000],
+    t_list = [1000, 3000],
     r = 50,
     trials = 20
   )
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     n_list = [20],
     s_list = [7,5,3,1],
     a_list = [50],
-    t_list = [1000, 3000, 5000],
+    t_list = [1000, 3000],
     r = 50,
     trials = 20
   )
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     n_list = [5, 10, 15],
     s_list = [1],
     a_list = [50],
-    t_list = [1000, 3000, 5000],
+    t_list = [1000, 3000],
     r = 50,
     trials = 20
   )
@@ -154,6 +154,8 @@ if __name__ == "__main__":
     r = 50,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_20_50_1, algo_config_20_50_1, "/home/ethanNguyen/Honours/oppt/runsv3-4", 8)
+  run_experiments_original_algo(orig_config_constant_s, algo_config_constant_s, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
+  print('half way.')
+  run_experiments_original_algo(orig_config_constant_n, algo_config_constant_n, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
   print('experiments are completed.')
 
