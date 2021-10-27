@@ -154,8 +154,6 @@ if __name__ == "__main__":
     r = 50,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_constant_s, algo_config_constant_s, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
-  print('half way.')
-  run_experiments_original_algo(orig_config_constant_n, algo_config_constant_n, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
+  run_experiments_original_algo(orig_config_large_constant_s, algo_config_large_constant_s, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
   print('experiments are completed.')
 
