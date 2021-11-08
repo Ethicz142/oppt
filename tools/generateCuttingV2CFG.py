@@ -34,6 +34,8 @@ def generate_cutting_V2_cfg(output_path, n, s, t, r, a=100, log_path=None):
         lower_bound, upper_bound = newGenerateRanges()
         modified_line = f'trueObjectSharpnessRange = [{lower_bound}, {upper_bound}]\n'
 
+      elif 'minParticleCount' in line: 
+        modified_line = f'minParticleCount = {max(150 * n, 3000)}\n'
 
       elif 'logPath' in line:
         if log_path is None:
