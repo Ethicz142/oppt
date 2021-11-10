@@ -170,17 +170,17 @@ if __name__ == "__main__":
     r = 200,
     trials = 20
   )
-  orig_config_n_40_s_1_3_5_7 = ExpConfig(
+  orig_config_n_40_s_3_5_7 = ExpConfig(
     n_list = [40],
-    s_list = [7, 5, 3, 1],
+    s_list = [7, 5, 3],
     a_list = [100],
     t_list = [1000, 3000],
     r = 200,
     trials = 20
   )
-  algo_config_n_40_s_1_3_5_7 = ExpConfig(
+  algo_config_n_40_s_3_5_7 = ExpConfig(
     n_list = [40],
-    s_list = [7, 5, 3, 1],
+    s_list = [7, 5, 3],
     a_list = [50],
     t_list = [1000, 3000],
     r = 200,
