@@ -170,6 +170,22 @@ if __name__ == "__main__":
     r = 200,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_n_30_40_50, algo_config_n_30_40_50, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
+  orig_config_n_40_s_1_3_5_7 = ExpConfig(
+    n_list = [40],
+    s_list = [7, 5, 3, 1],
+    a_list = [100],
+    t_list = [1000, 3000],
+    r = 200,
+    trials = 20
+  )
+  algo_config_n_40_s_1_3_5_7 = ExpConfig(
+    n_list = [40],
+    s_list = [7, 5, 3, 1],
+    a_list = [50],
+    t_list = [1000, 3000],
+    r = 200,
+    trials = 20
+  )
+  run_experiments_original_algo(orig_config_n_40_s_1_3_5_7, algo_config_n_40_s_1_3_5_7, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
   print('experiments are completed.')
 
