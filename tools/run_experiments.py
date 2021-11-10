@@ -186,6 +186,6 @@ if __name__ == "__main__":
     r = 200,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_n_40_s_1_3_5_7, algo_config_n_40_s_1_3_5_7, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
+  run_experiments_original_algo(orig_config_n_40_s_3_5_7, algo_config_n_40_s_3_5_7, "/home/ethanNguyen/Honours/oppt/runsv3-3", 8)
   print('experiments are completed.')
 
