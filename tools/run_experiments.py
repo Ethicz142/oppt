@@ -186,9 +186,9 @@ if __name__ == "__main__":
     r = 200,
     trials = 20
   )
-  run_experiments_original_algo(orig_config_constant_s, algo_config_constant_s, "/home/ethanNguyen/Honours/oppt/runsv4-2", 8)
-  run_experiments_original_algo(orig_config_n_30_40_50, algo_config_n_30_40_50, "/home/ethanNguyen/Honours/oppt/runsv4-2", 8)
-  run_experiments_original_algo(orig_config_constant_n, algo_config_constant_n, "/home/ethanNguyen/Honours/oppt/runsv4-2", 8)
+  run_experiments_original_algo(orig_config_constant_s, algo_config_constant_s, "/home/ethanNguyen/Honours/oppt/runsv4-1", 8)
+  run_experiments_original_algo(orig_config_n_30_40_50, algo_config_n_30_40_50, "/home/ethanNguyen/Honours/oppt/runsv4-1", 8)
+  run_experiments_original_algo(orig_config_constant_n, algo_config_constant_n, "/home/ethanNguyen/Honours/oppt/runsv4-1", 8)
   
   print('experiments are completed.')
 
