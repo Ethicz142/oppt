@@ -204,7 +204,7 @@ if __name__ == "__main__":
   )
   orig_increasing_s = ExpConfig(
     n_list = [50],
-    s_list = [1, 3, 5, 7, 9, 11],
+    s_list = [3, 5, 7, 9, 11],
     a_list = [100],
     t_list = [1000, 3000],
     r = 200,
@@ -213,7 +213,7 @@ if __name__ == "__main__":
 
   algo_increasing_s = ExpConfig(
     n_list = [50],
-    s_list = [1, 3, 5, 7, 9, 11],
+    s_list = [3, 5, 7, 9, 11],
     a_list = [50],
     t_list = [1000, 3000],
     r = 200,
